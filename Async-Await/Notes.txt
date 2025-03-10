@@ -1,0 +1,156 @@
+ What is Async/Await?
+Async/Await is a modern way to handle asynchronous operations in JavaScript, making asynchronous code look and behave more like synchronous code.
+
+🔸 Why use Async/Await?
+Avoids callback hell
+Easier to read and maintain compared to Promises
+Handles errors using try/catch
+🔹 How Does It Work?
+1️⃣ async Keyword
+Declares a function as asynchronous, which means it always returns a Promise.
+
+
+async function fetchData() {
+    return "Hello, World!";
+}
+
+fetchData().then(console.log); // Output: Hello, World!
+Even though we return a string, fetchData() actually returns a Promise.
+
+2️⃣ await Keyword
+Pauses execution until the Promise resolves.
+
+  
+async function fetchData() {
+    let response = await Promise.resolve("Data Loaded");
+    console.log(response);
+}
+
+fetchData(); 
+// Output: Data Loaded
+The await keyword halts execution inside the function until the Promise is resolved.
+
+🔹 Real-World Example: Fetching API Data
+Let's simulate an API call using fetch.
+
+ Code
+async function getUserData() {
+    try {
+        let response = await fetch("https://jsonplaceholder.typicode.com/users/1");
+        let data = await response.json(); // Parse JSON
+        console.log(data);
+    } catch (error) {
+        console.log("Error fetching data:", error);
+    }
+}
+
+getUserData();
+🔸 Step-by-Step Execution
+fetch(url) returns a Promise.
+await pauses execution until the API responds.
+response.json() returns another Promise, which await resolves.
+The data is printed to the console.
+If an error occurs, catch handles it.
+🔹 Handling Multiple Async Calls
+Sometimes, we need to run multiple async operations at once.
+
+🟢 Solution 1: Promise.all()
+ Code
+async function fetchMultipleUsers() {
+    try {
+        let [user1, user2] = await Promise.all([
+            fetch("https://jsonplaceholder.typicode.com/users/1").then(res => res.json()),
+            fetch("https://jsonplaceholder.typicode.com/users/2").then(res => res.json())
+        ]);
+
+        console.log(user1, user2);
+    } catch (error) {
+        console.log("Error fetching users:", error);
+    }
+}
+
+fetchMultipleUsers();
+✔️ All requests happen in parallel instead of waiting for one to finish.
+
+🔹 Async/Await in Loops
+❌ Common Mistake: await Inside forEach
+ Code
+async function fetchUsers() {
+    let users = [1, 2, 3];
+
+    users.forEach(async (id) => {
+        let response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+        let data = await response.json();
+        console.log(data);
+    });
+}
+
+fetchUsers();
+🚨 Problem: forEach doesn't wait for await, so the function completes before all API calls resolve.
+
+✅ Correct Approach: Use for...of
+ Code
+async function fetchUsers() {
+    let users = [1, 2, 3];
+
+    for (let id of users) {
+        let response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+        let data = await response.json();
+        console.log(data);
+    }
+}
+
+fetchUsers();
+✔️ This ensures that each request completes before moving to the next one.
+
+🔹 Handling Timeouts and Delays
+You can use await with setTimeout for delayed execution.
+
+ Code
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function delayedMessage() {
+    console.log("Wait for it...");
+    await delay(2000); // Wait for 2 seconds
+    console.log("Hello after 2 seconds!");
+}
+
+delayedMessage();
+🔹 Error Handling with Async/Await
+1️⃣ Using Try/Catch
+ Code
+async function fetchData() {
+    try {
+        let response = await fetch("https://invalid-url.com"); 
+        let data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.log("Caught an error:", error.message);
+    }
+}
+
+fetchData();
+✔️ If the API call fails, the catch block runs instead of crashing the app.
+
+2️⃣ Handling Errors with .catch()
+ Code
+async function fetchData() {
+    return fetch("https://invalid-url.com")
+        .then(response => response.json())
+        .catch(error => console.log("Caught an error:", error.message));
+}
+
+fetchData();
+✔️ Works like try/catch, but uses .catch() for errors.
+
+
+
+🔹 Summary
+Feature	Description
+async	Declares a function as asynchronous (returns a Promise).
+await	Waits for a Promise to resolve before continuing execution.
+try/catch	Handles errors inside an async function.
+Promise.all	Runs multiple async functions in parallel.
+for...of	Best way to iterate with await.

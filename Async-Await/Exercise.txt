@@ -1,0 +1,19 @@
+🔹 Exercises: 
+
+1️⃣ Convert Callbacks to Async/Await
+Convert this callback-based function to use async/await:
+
+ Code
+function getData(callback) {
+    setTimeout(() => {
+        callback("Data loaded");
+    }, 2000);
+}
+
+getData(console.log); // Convert this to async/await!
+
+2️⃣ Fetch Data for Multiple Users in Parallel
+Create a function that fetches data for users 1 to 5 in parallel using Promise.all().
+
+3️⃣ Simulate an API Request Retry
+Write an async function that retries an API call up to 3 times if it fails.
