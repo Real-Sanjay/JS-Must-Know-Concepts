@@ -1,0 +1,119 @@
+Closures in JavaScript : 
+Closures are one of the most powerful and commonly used features in JavaScript. A closure allows a function to access variables from an enclosing scope, even after that scope has exited.
+
+1. Understanding Closures
+A closure is created when a function "remembers" the variables from its surrounding scope even after that scope has finished executing.
+
+Example 1: Basic Closure
+
+function outerFunction() {
+    let count = 0; // Private variable
+
+    return function innerFunction() {
+        count++;
+        console.log(`Count is now: ${count}`);
+    };
+}
+
+const counter = outerFunction();
+counter(); // Count is now: 1
+counter(); // Count is now: 2
+counter(); // Count is now: 3 
+Here, innerFunction remembers the count variable even after outerFunction has executed.
+
+2. Real-World Use Cases of Closures
+a) Data Privacy (Encapsulation)
+Closures help create private variables, ensuring they aren't directly accessible from outside.
+
+function createUser(name) {
+    let _balance = 0; // Private variable
+
+    return {
+        getName: function () {
+            return name;
+        },
+        deposit: function (amount) {
+            if (amount > 0) _balance += amount;
+            console.log(`Deposited: $${amount}, New Balance: $${_balance}`);
+        },
+        getBalance: function () {
+            return `Balance for ${name}: $${_balance}`;
+        }
+    };
+}
+
+const user1 = createUser("Alice");
+console.log(user1.getName()); // Alice
+user1.deposit(100); // Deposited: $100, New Balance: $100
+console.log(user1.getBalance()); // Balance for Alice: $100
+Here, _balance cannot be accessed directly but can be modified using the functions inside the closure.
+
+b) Function Factories
+Closures help create pre-configured functions.
+
+
+function discount(discountRate) {
+    return function (price) {
+        return price - price * discountRate;
+    };
+}
+
+const tenPercentOff = discount(0.1);
+const twentyPercentOff = discount(0.2);
+
+console.log(tenPercentOff(100)); // 90
+console.log(twentyPercentOff(200)); // 160
+This is useful in e-commerce platforms where discounts are frequently applied.
+
+c) Event Listeners and Closures
+Closures help retain values even after an event occurs.
+
+function buttonHandler(color) {
+    return function () {
+        document.body.style.backgroundColor = color;
+    };
+}
+
+const blueButton = document.getElementById("blue");
+const redButton = document.getElementById("red");
+
+blueButton.addEventListener("click", buttonHandler("blue"));
+redButton.addEventListener("click", buttonHandler("red"));
+Here, each event listener retains access to the color variable.
+
+3. Closures and Loops
+One common issue is closures inside loops capturing the same reference.
+
+for (var i = 1; i <= 3; i++) {
+    setTimeout(function () {
+        console.log(`Button ${i} clicked`);
+    }, 1000);
+}
+❌ Problem: The output will be:
+
+Button 4 clicked
+Button 4 clicked
+Button 4 clicked
+This happens because setTimeout captures the final value of i, which is 4.
+
+✅ Solution using Closures
+
+for (var i = 1; i <= 3; i++) {
+    (function (j) {
+        setTimeout(function () {
+            console.log(`Button ${j} clicked`);
+        }, 1000);
+    })(i);
+}
+Now, j is uniquely assigned for each iteration.
+
+✅ Solution using let
+
+
+for (let i = 1; i <= 3; i++) {
+    setTimeout(function () {
+        console.log(`Button ${i} clicked`);
+    }, 1000);
+}
+Using let creates a block-scoped variable, preserving each iteration’s value.
+

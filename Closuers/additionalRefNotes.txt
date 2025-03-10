@@ -1,0 +1,83 @@
+More about Closure and loops:
+
+Why Does It Print Button 4 clicked Three Times?
+The issue lies in how var works with closures inside loops.
+
+Step-by-step Execution:
+Code:
+
+for (var i = 1; i <= 3; i++) {
+    setTimeout(function () {
+        console.log(`Button ${i} clicked`);
+    }, 1000);
+}
+Flow of Execution:
+The loop starts: i = 1, i <= 3 → setTimeout is scheduled.
+i = 2, i <= 3 → setTimeout is scheduled.
+i = 3, i <= 3 → setTimeout is scheduled.
+i = 4, i <= 3 is false, so the loop stops.
+Now, after 1000ms (1 second), all setTimeout functions execute.
+🚨 Problem: When the setTimeout executes, it refers to i in memory, which by then has already reached 4.
+💡 Key Understanding: setTimeout does not take a snapshot of i at each iteration. Instead, it uses the latest reference of i (which is 4 after the loop).
+
+Output (after 1 second):
+
+Button 4 clicked
+Button 4 clicked
+Button 4 clicked
+This happens because i is a var, which is function-scoped and does not create a new scope in the loop.
+
+Why Does let Fix This Issue?
+Code using let:
+
+for (let i = 1; i <= 3; i++) {
+    setTimeout(function () {
+        console.log(`Button ${i} clicked`);
+    }, 1000);
+}
+Flow of Execution:
+let i = 1 → New block scope is created → setTimeout captures i = 1
+let i = 2 → New block scope is created → setTimeout captures i = 2
+let i = 3 → New block scope is created → setTimeout captures i = 3
+Loop ends at i = 4.
+✅ Fix: let creates a new block-scoped variable for each iteration, so each setTimeout gets its own i.
+
+Correct Output:
+
+
+Button 1 clicked
+Button 2 clicked
+Button 3 clicked
+Using an IIFE to Fix It with var
+If we must use var, we can wrap the setTimeout in an Immediately Invoked Function Expression (IIFE).
+
+Code:
+
+for (var i = 1; i <= 3; i++) {
+    (function (j) { 
+        setTimeout(function () {
+            console.log(`Button ${j} clicked`);
+        }, 1000);
+    })(i);
+}
+How Does This Work?
+(function (j) {...})(i); is an IIFE.
+Each time the loop runs:
+The function is immediately executed with the current value of i passed as j.
+j is local to that function, meaning setTimeout captures a separate copy of j each time.
+Output:
+
+
+Button 1 clicked
+Button 2 clicked
+Button 3 clicked
+What is (function (j) { ... })(i); Doing?
+function (j) { ... } is an anonymous function that takes j as a parameter.
+(i) immediately calls this function with the current value of i.
+j acts as a new variable, separate from i, and is captured correctly inside setTimeout.
+
+Summary
+Approach	Does it Work?	Why?
+var inside for	❌ No	i is shared across all iterations and is 4 when setTimeout executes.
+let inside for	✅ Yes	let creates a new block-scoped i for each loop iteration.
+IIFE with var	✅ Yes	Each function call gets a separate j, capturing the correct value of i.

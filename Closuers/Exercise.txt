@@ -1,0 +1,11 @@
+Exercise 1: Counter with Reset
+Create a function createCounter that returns an object with:
+
+increment() method to increase count.
+decrement() method to decrease count.
+reset() method to reset count.
+getCount() method to retrieve count.
+
+
+Exercise 2: Rate Limiter using Closures
+Create a function rateLimiter that allows a function to be called only once in a specified time.
