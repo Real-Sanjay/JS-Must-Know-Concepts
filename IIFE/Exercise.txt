@@ -1,0 +1,24 @@
+
+🎯 Exercises
+Exercise 1: Understanding Scope in IIFE
+What will be the output?
+
+code
+(function () {
+    let message = "Hello, World!";
+})();
+console.log(message);
+Exercise 2: IIFE with Parameters
+Predict the output:
+
+code
+(function (x, y) {
+    console.log(x + y);
+})(5, 10);
+Exercise 3: Fix the Error
+What's wrong with this code?
+
+code
+(function () {
+    console.log("Missing something")
+}();

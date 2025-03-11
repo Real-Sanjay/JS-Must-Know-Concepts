@@ -1,0 +1,17 @@
+✅ Exercise Answers
+1️⃣ Exercise 1 Output:
+❌ ReferenceError: message is not defined
+👉 Because message is inside the IIFE and not accessible globally.
+
+2️⃣ Exercise 2 Output:
+✅ 15
+👉 The IIFE takes 5 and 10 as arguments and executes console.log(5 + 10);.
+
+3️⃣ Exercise 3 Fix:
+❌ SyntaxError: Unexpected token ')'
+✅ Corrected code:
+code
+(function () {
+    console.log("Fixed!");
+})();
+💡 Parentheses were missing around the IIFE.
