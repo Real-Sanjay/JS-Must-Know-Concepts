@@ -1,0 +1,34 @@
+🎯 Exercises
+
+Exercise 1: Global vs Local Scope
+What will be the output?
+
+code
+let name = "Alice";
+
+function greet() {
+    let name = "Bob";
+    console.log(`Hello, ${name}`);
+}
+
+greet();
+console.log(`Global name: ${name}`);
+
+Exercise 2: Function Scope
+What happens when we run this?
+
+code
+function testScope() {
+    let message = "Hello";
+}
+console.log(message);
+
+
+Exercise 3: Block Scope
+What will this print?
+
+code
+if (true) {
+    let test = "Inside Block";
+}
+console.log(test);

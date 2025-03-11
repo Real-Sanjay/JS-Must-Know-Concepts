@@ -1,0 +1,28 @@
+
+✅ Exercise Answers
+1️⃣ Exercise 1 Output
+
+
+Hello, Bob
+Global name: Alice
+👉 Because name inside greet() is local and does not affect the global name.
+
+2️⃣ Exercise 2 Output
+
+
+ReferenceError: message is not defined
+👉 Because message is function-scoped and cannot be accessed outside.
+
+3️⃣ Exercise 3 Output
+
+
+ReferenceError: test is not defined
+👉 Because test is block-scoped and does not exist outside {}.
+
+📌 Key Takeaways
+1️⃣ Global Scope – Variables accessible anywhere.
+2️⃣ Function Scope – Variables exist only inside functions.
+3️⃣ Block Scope (let & const) – Variables exist only inside {} blocks.
+4️⃣ Closures – Inner functions can access outer function’s variables.
+5️⃣ var vs let vs const – Always prefer let and const for better scoping.
+6️⃣ Hoisting – Variables declared with var are hoisted as undefined.

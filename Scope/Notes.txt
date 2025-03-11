@@ -1,0 +1,105 @@
+🔥 Scope in JavaScript
+Scope determines where variables can be accessed in a program. JavaScript has three main types of scope:
+
+1️⃣ Global Scope
+2️⃣ Function (Local) Scope
+3️⃣ Block Scope (introduced in ES6)
+
+
+1️⃣ Global Scope
+Definition:
+A variable declared outside of any function or block is global.
+It can be accessed anywhere in the program.
+Example (Real-World Scenario: Config Settings in a Web App)
+code
+const API_URL = "https://example.com/api"; // Global scope
+
+function fetchData(endpoint) {
+    console.log(`Fetching data from: ${API_URL}/${endpoint}`);
+}
+
+fetchData("users"); // ✅ Accessible anywhere
+console.log(API_URL); // ✅ Works globally
+👉 The problem with global variables: They stay in memory and can be overwritten by mistake.
+🔹 Best Practice: Use const to avoid accidental changes.
+
+2️⃣ Function Scope (Local Scope)
+Definition:`
+Variables declared inside a function are only available inside that function.
+Cannot be accessed outside.
+Example (Real-World Scenario: Local Variables in an API Request)
+code
+function fetchUserData(userId) {
+    let endpoint = `https://example.com/users/${userId}`; // Function-scoped variable
+    console.log(`Fetching from: ${endpoint}`);
+}
+
+fetchUserData(101);
+console.log(endpoint); // ❌ ReferenceError: endpoint is not defined
+👉 Why? endpoint is local to fetchUserData() and cannot be accessed outside.
+
+🔹 Best Practice: Keep variables inside functions unless you need them globally.
+
+3️⃣ Block Scope (let and const)
+Definition:
+Variables declared with let and const are block-scoped.
+They are only accessible inside the {} block they are declared in.
+Example (Real-World Scenario: Loop Variables)
+code
+for (let i = 0; i < 3; i++) {
+    console.log(`Iteration: ${i}`); // ✅ Accessible inside loop
+}
+console.log(i); // ❌ ReferenceError: i is not defined (because of block scope)
+👉 If we used var instead of let, i would be accessible outside the loop!
+
+4️⃣ Scope & Closures
+Variables in an outer function’s scope can be accessed by an inner function.
+This concept is called Closures (which we already covered).
+
+Example (Real-World Scenario: Private Data in a Function)
+code
+function counter() {
+    let count = 0; // Function scope
+
+    return function () {
+        count++;
+        console.log(`Count: ${count}`);
+    };
+}
+
+const increment = counter();
+increment(); // Count: 1
+increment(); // Count: 2
+
+console.log(count); // ❌ ReferenceError: count is not defined
+5️⃣ var vs let vs const in Scope
+Feature	var	let	const
+Scope	Function	Block	Block
+Redeclaration	✅ Allowed	❌ Error	❌ Error
+Reassignment	✅ Allowed	✅ Allowed	❌ Not Allowed
+Hoisted?	✅ Yes (but undefined)	✅ Yes (but not initialized)	✅ Yes (but not initialized)
+Example: var Scope Issue
+code
+if (true) {
+    var a = 10; 
+}
+console.log(a); // ✅ 10 (Because `var` is NOT block-scoped)
+
+if (true) {
+    let b = 20;
+}
+console.log(b); // ❌ ReferenceError (Because `let` is block-scoped)
+👉 Best Practice: Always use let or const instead of var.
+
+6️⃣ Hoisting & Scope
+Hoisting means variable declarations are moved to the top of their scope.
+
+Example: Hoisting in var vs let
+code
+console.log(x); // ✅ undefined (var is hoisted but not initialized)
+var x = 5;
+
+console.log(y); // ❌ ReferenceError (let is hoisted but not initialized)
+let y = 10;
+🔹 Best Practice: Always declare variables at the top of their scope to avoid hoisting issues.
+

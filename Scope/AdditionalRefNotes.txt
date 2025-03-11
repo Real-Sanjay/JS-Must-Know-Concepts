@@ -1,0 +1,1 @@
+https://github.com/leonardomso/33-js-concepts?tab=readme-ov-file#6-function-scope-block-scope-and-lexical-scope
