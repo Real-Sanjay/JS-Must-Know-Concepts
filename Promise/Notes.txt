@@ -1,0 +1,156 @@
+🚀 Promises in JavaScript
+🔹 What is a Promise?
+A Promise is an object that represents the eventual completion (or failure) of an asynchronous operation. It allows handling asynchronous operations more cleanly than callbacks.
+
+🔹 Promise States
+A Promise has three possible states:
+
+1️⃣ Pending → Initial state, operation not completed
+2️⃣ Fulfilled → Operation completed successfully
+3️⃣ Rejected → Operation failed
+
+code
+const myPromise = new Promise((resolve, reject) => {
+    let success = true;
+    setTimeout(() => {
+        if (success) {
+            resolve("Operation successful!"); // 🟢 Fulfilled
+        } else {
+            reject("Operation failed!"); // 🔴 Rejected
+        }
+    }, 2000);
+});
+
+console.log(myPromise); // Initially: Pending
+🔹 Handling Promises with .then() and .catch()
+code
+myPromise
+    .then((result) => {
+        console.log("Success:", result); // Runs if resolved
+    })
+    .catch((error) => {
+        console.log("Error:", error); // Runs if rejected
+    });
+💡 .then() → Handles successful completion
+💡 .catch() → Catches errors (rejection)
+
+
+🔹 Chaining Promises
+Each .then() returns a new Promise, allowing chaining.
+
+code
+function fetchData() {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve("Data Loaded"), 1000);
+    });
+}
+
+fetchData()
+    .then((data) => {
+        console.log(data);
+        return "Processed Data"; // Passed to next `.then()`
+    })
+    .then((processed) => console.log(processed))
+    .catch((error) => console.log("Error:", error));
+🔹 Output:
+✅ "Data Loaded"
+✅ "Processed Data"
+
+🔹 Using .finally()
+finally() runs whether the Promise resolves or rejects.
+
+code
+myPromise
+    .then((result) => console.log(result))
+    .catch((error) => console.log(error))
+    .finally(() => console.log("Promise finished!"));
+💡 Use case: Clean-up actions, like hiding a loading spinner.
+
+🔹 Creating a Promise-Based Function
+code
+function fetchUser(userId) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (userId === 1) resolve({ id: 1, name: "Alice" });
+            else reject("User not found");
+        }, 1000);
+    });
+}
+
+fetchUser(1)
+    .then((user) => console.log("User found:", user))
+    .catch((error) => console.log("Error:", error));
+🔹 If userId is 1, it resolves. Otherwise, it rejects.
+
+🔹 Promise.all() – Run Multiple Promises in Parallel
+Promise.all() runs multiple Promises in parallel and waits for all to complete.
+
+code
+const p1 = new Promise((res) => setTimeout(() => res("First"), 1000));
+const p2 = new Promise((res) => setTimeout(() => res("Second"), 2000));
+const p3 = new Promise((res) => setTimeout(() => res("Third"), 3000));
+
+Promise.all([p1, p2, p3]).then((values) => console.log(values));
+🔹 Output after 3 sec:
+✅ ["First", "Second", "Third"]
+
+💡 If any Promise fails, Promise.all() rejects all.
+
+🔹 Promise.race() – First Resolved Promise Wins
+Promise.race() returns the first fulfilled/rejected Promise.
+
+code
+Promise.race([p1, p2, p3]).then((winner) => console.log("Winner:", winner));
+🔹 Output after 1 sec:
+✅ "Winner: First"
+
+💡 Use case: Fetching from multiple sources, using the fastest.
+
+🔹 Promise.any() – First Fulfilled Promise Wins
+Unlike race(), it ignores rejections.
+
+code
+const fail1 = new Promise((_, reject) => setTimeout(() => reject("Fail 1"), 1000));
+const success = new Promise((res) => setTimeout(() => res("Success"), 2000));
+
+Promise.any([fail1, success])
+    .then((result) => console.log(result)) // ✅ "Success"
+    .catch((err) => console.log(err));
+💡 Use case: Getting the first successful API response.
+
+🔹 Real-World Project Scenarios
+🔹 1️⃣ Fetching Data from an API
+code
+function getWeather(city) {
+    return fetch(`https://api.weatherapi.com/v1/current.json?key=YOUR_KEY&q=${city}`)
+        .then((response) => response.json())
+        .then((data) => console.log(`Weather in ${city}:`, data))
+        .catch((error) => console.log("Error:", error));
+}
+
+getWeather("New York");
+🔹 2️⃣ Simulating API Request with Retry Logic
+code
+function fetchWithRetry(url, retries = 3) {
+    return fetch(url)
+        .then((response) => response.json())
+        .catch((error) => {
+            if (retries > 0) {
+                console.log(`Retrying... (${retries} left)`);
+                return fetchWithRetry(url, retries - 1);
+            }
+            throw error;
+        });
+}
+
+fetchWithRetry("https://jsonplaceholder.typicode.com/posts/1", 3)
+    .then((data) => console.log(data))
+    .catch((err) => console.log("Final Error:", err));
+
+
+    📌 Key Takeaways
+1️⃣ Promises handle async operations efficiently
+2️⃣ .then() for success, .catch() for errors, .finally() for cleanup
+3️⃣ Chaining allows sequential operations
+4️⃣ Promise.all() waits for all, Promise.race() waits for first
+5️⃣ Useful for API requests, retries, and parallel processing

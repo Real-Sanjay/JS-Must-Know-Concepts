@@ -1,0 +1,32 @@
+🎯 Exercises
+Exercise 1: Fix the Promise Code
+What's wrong with this?
+
+code
+new Promise((resolve, reject) => {
+    console.log("Hello");
+    resolve("Done");
+}).then(console.log);
+
+
+Exercise 2: Use Promise.all() to Fetch Multiple Users
+code
+function getUserData(userId) {
+    return fetch(`https://jsonplaceholder.typicode.com/users/${userId}`).then((res) => res.json());
+}
+
+async function fetchUsers() {
+    const userIds = [1, 2, 3];
+    const users = /* Complete the missing part */
+    console.log(users);
+}
+fetchUsers();
+Exercise 3: Implement a Delayed Promise
+Write a function delay(ms) that returns a Promise that resolves after ms milliseconds.
+
+code
+function delay(ms) {
+    // Implement this
+}
+
+delay(2000).then(() => console.log("Executed after 2 seconds"));
