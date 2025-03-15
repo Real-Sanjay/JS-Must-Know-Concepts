@@ -1,0 +1,37 @@
+ Exercise Answers
+
+
+1️⃣ Exercise 1 Output:
+✅ "Start"
+✅ "End"
+✅ "Promise"
+✅ "Timeout"
+
+
+2️⃣ Exercise 2 Fix:
+document.querySelector("button").addEventListener("click", () => {
+    setTimeout(() => {
+        let sum = 0;
+        for (let i = 0; i < 1000000000; i++) {
+            sum += i;
+        }
+        console.log("Done:", sum);
+    }, 0);
+});
+
+
+Exercise 3: 
+Implement a function that waits for 500ms before handling a click event.
+
+code
+function debounce(func, delay) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(func(), delay);
+    };
+}
+
+document.querySelector("button").addEventListener("click", debounce(() => {
+    console.log("Button Clicked!");
+}, 500));

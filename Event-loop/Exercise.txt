@@ -1,0 +1,42 @@
+.
+
+🎯 Exercises
+Exercise 1: Predict the Output
+code
+console.log("Start");
+
+setTimeout(() => console.log("Timeout"), 0);
+
+Promise.resolve().then(() => console.log("Promise"));
+
+console.log("End");
+
+
+Exercise 2: Fix the UI Freeze
+Refactor this to prevent UI blocking:
+
+code
+document.querySelector("button").addEventListener("click", () => {
+    let sum = 0;
+    for (let i = 0; i < 1000000000; i++) {
+        sum += i;
+    }
+    console.log("Done:", sum);
+});
+
+
+
+Exercise 3: Implement a Debounced Click Event
+Implement a function that waits for 500ms before handling a click event.
+
+code
+function debounce(func, delay) {
+    let timeout;
+    return function (...args) {
+        // Implement debouncing logic
+    };
+}
+
+document.querySelector("button").addEventListener("click", debounce(() => {
+    console.log("Button Clicked!");
+}, 500));

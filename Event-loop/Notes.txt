@@ -1,0 +1,114 @@
+🚀 The Event Loop in JavaScript
+🔹 What is the Event Loop?
+The Event Loop is what enables JavaScript to handle asynchronous operations (like timers, API calls, and DOM events) efficiently, despite being single-threaded.
+
+JavaScript uses an execution stack and task queues to manage function execution, ensuring non-blocking behavior.
+
+🔹 How the Event Loop Works?
+JavaScript execution follows this pattern:
+1️⃣ Execute all synchronous code (call stack first)
+2️⃣ Process microtasks (Promises, queueMicrotask, MutationObserver)
+3️⃣ Process macrotasks (setTimeout, setInterval, setImmediate, I/O, UI events)
+4️⃣ Repeat the cycle
+
+🔹 Understanding the Call Stack
+The Call Stack is a LIFO (Last In, First Out) data structure that keeps track of function calls.
+
+code
+function first() {
+    console.log("First");
+}
+function second() {
+    console.log("Second");
+}
+function third() {
+    console.log("Third");
+}
+
+first();
+second();
+third();
+
+🔹 Output:
+✅ "First"
+✅ "Second"
+✅ "Third"
+
+
+💡 All functions execute synchronously in the Call Stack.
+
+🔹 Event Loop in Action
+code
+console.log("Start");
+
+setTimeout(() => {
+    console.log("Timeout");
+}, 0);
+
+Promise.resolve().then(() => console.log("Promise"));
+
+console.log("End");
+
+🔹 Execution Flow:
+1️⃣ "Start" (Sync)
+2️⃣ "End" (Sync)
+3️⃣ "Promise" (Microtask)
+4️⃣ "Timeout" (Macrotask)
+
+🔹 Output:
+✅ "Start"
+✅ "End"
+✅ "Promise"
+✅ "Timeout"
+
+💡 Microtasks (Promise) execute before Macrotasks (setTimeout).
+
+🔹 Microtasks vs Macrotasks
+Task Type	Example
+Microtasks	Promise.then(), MutationObserver, queueMicrotask()
+Macrotasks	setTimeout(), setInterval(), setImmediate(), I/O, UI Events
+🔹 Microtasks always execute before macrotasks after the main stack is empty.
+
+🔹 Event Loop in Real Projects
+1️⃣ Handling API Calls Efficiently
+code
+fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then((response) => response.json())
+    .then((data) => console.log("Fetched Data:", data));
+
+console.log("Fetching started...");
+
+🔹 Output:
+✅ "Fetching started..." (Sync)
+✅ "Fetched Data: {...}" (Async)
+
+💡 The fetch() API is non-blocking. It runs in the background while JavaScript continues execution.
+
+2️⃣ Handling UI Events with setTimeout
+code
+document.querySelector("button").addEventListener("click", () => {
+    setTimeout(() => {
+        console.log("Button Clicked After Delay");
+    }, 2000);
+});
+🔹 Button click is an event → setTimeout pushes the callback to the event queue.
+
+💡 Avoid long synchronous tasks to keep UI responsive.
+
+3️⃣ Preventing UI Freezes
+Problem:
+
+code
+document.querySelector("button").addEventListener("click", () => {
+    for (let i = 0; i < 1000000000; i++) {} // Long sync task
+    console.log("Clicked!");
+});
+💡 This blocks the UI! The event loop can’t process UI updates until execution finishes.
+
+🔹 Solution: Use setTimeout()
+
+code
+document.querySelector("button").addEventListener("click", () => {
+    setTimeout(() => console.log("Clicked!"), 0);
+});
+✅ Now the UI remains responsive.
