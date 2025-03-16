@@ -1,0 +1,81 @@
+🚀 JavaScript Hoisting 
+
+🔹 What is Hoisting?
+Hoisting is JavaScript's default behavior of moving variable and function declarations to the top of their scope before execution.
+
+✅ Example (Without Hoisting)
+code
+console.log(name); // ❌ ReferenceError: name is not defined
+let name = "John";
+This throws an error because name is accessed before it’s declared.
+
+🔹 How Variables are Hoisted
+1️⃣ var is Hoisted but Undefined
+code
+console.log(city); // ✅ undefined
+var city = "New York";
+console.log(city); // ✅ "New York"
+✅ The declaration (var city;) is hoisted to the top, but the assignment ("New York") remains in place.
+
+2️⃣ let and const are Hoisted but Not Initialized
+code
+console.log(age); // ❌ ReferenceError: Cannot access 'age' before initialization
+let age = 25;
+✅ Unlike var, let and const are hoisted, but they are not initialized, causing a ReferenceError.
+
+3️⃣ Function Declarations are Fully Hoisted
+code
+sayHello(); // ✅ "Hello, world!"
+
+function sayHello() {
+    console.log("Hello, world!");
+}
+✅ The entire function is hoisted, so we can call it before its definition.
+
+4️⃣ Function Expressions are Not Hoisted
+code
+greet(); // ❌ TypeError: greet is not a function
+
+var greet = function() {
+    console.log("Hi!");
+};
+✅ Only var greet; is hoisted, not the function definition.
+
+🔹 Temporal Dead Zone (TDZ)
+Variables declared with let and const are in a "Temporal Dead Zone" from the start of the block until they are initialized.
+
+code
+console.log(x); // ❌ ReferenceError: Cannot access 'x' before initialization
+let x = 10;
+console.log(x); // ✅ 10
+✅ The Temporal Dead Zone (TDZ) exists from the start of the block until the variable is initialized.
+
+🔹 Hoisting in var vs let vs const
+Keyword	Hoisted?	Initialization	Temporal Dead Zone?
+var	✅ Yes	✅ Undefined	❌ No
+let	✅ Yes	❌ Not initialized	✅ Yes
+const	✅ Yes	❌ Not initialized	✅ Yes
+🔹 Practical Example – Hoisting in Loops
+🚨 Hoisting with var (Global Scope)
+code
+for (var i = 0; i < 3; i++) {
+    setTimeout(() => console.log(i), 1000);
+}
+// ✅ Output: 3, 3, 3 (because `var` has global scope)
+✔️ var is hoisted and has function/global scope, so i is overwritten.
+
+✅ Fix with let (Block Scope)
+code
+for (let i = 0; i < 3; i++) {
+    setTimeout(() => console.log(i), 1000);
+}
+// ✅ Output: 0, 1, 2 (because `let` has block scope)
+✔️ let ensures each iteration has a new i value.
+
+🔹 Key Takeaways
+1️⃣ Function declarations are fully hoisted.
+2️⃣ var variables are hoisted but initialized as undefined.
+3️⃣ let and const are hoisted but not initialized (TDZ).
+4️⃣ Function expressions and arrow functions are not hoisted.
+5️⃣ Use let and const instead of var to avoid hoisting issues.
+

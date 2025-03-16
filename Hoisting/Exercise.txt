@@ -1,0 +1,7 @@
+What will be the output of this code?
+
+console.log(a);
+var a = 10;
+
+console.log(b);
+let b = 20;
