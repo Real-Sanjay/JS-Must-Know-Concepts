@@ -1,0 +1,13 @@
+🔹 Exercises
+1️⃣ Find the longest word in an array
+ 
+const words = ["apple", "banana", "strawberry", "kiwi"];
+
+
+2️⃣ Convert an array of numbers to their squares
+
+const numbers = [2, 3, 4];
+
+3️⃣ Count occurrences of elements in an array
+
+const items = ["apple", "banana", "apple", "orange", "banana", "apple"];

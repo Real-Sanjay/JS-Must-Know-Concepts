@@ -1,0 +1,120 @@
+JavaScript Arrays 
+Arrays are one of the most fundamental data structures in JavaScript.
+
+
+🔹 What is an Array?
+An array is a special type of object used to store multiple values in a single variable.
+
+code
+const fruits = ["Apple", "Banana", "Mango"];
+console.log(fruits[0]); // Apple
+console.log(fruits.length); // 3
+✅ Arrays in JavaScript are zero-indexed (fruits[0] refers to the first element).
+✅ length returns the total number of elements in the array.
+
+🔹 Modifying Array Methods (Change Original Array)
+
+Method	Description	Example
+push()	Adds element at the end	arr.push("newItem")
+pop()	Removes last element	arr.pop()
+shift()	Removes first element	arr.shift()
+unshift()	Adds element at the beginning	arr.unshift("newItem")
+splice()	Adds/removes elements at a specific index	arr.splice(1, 2, "newItem")
+reverse()	Reverses the array	arr.reverse()
+sort()	Sorts the array	arr.sort()
+🔹 Example: Using Modifying Methods
+code
+const numbers = [10, 20, 30];
+
+numbers.push(40);
+console.log(numbers); // [10, 20, 30, 40]
+
+numbers.pop();
+console.log(numbers); // [10, 20, 30]
+
+numbers.unshift(5);
+console.log(numbers); // [5, 10, 20, 30]
+
+numbers.shift();
+console.log(numbers); // [10, 20, 30]
+✅ Real-World Scenario: Managing a queue system in a task scheduler.
+
+🔹 Non-Modifying Array Methods (Returns a New Array)
+Method	Description	Example
+map()	Transforms each element and returns a new array	arr.map(x => x * 2)
+filter()	Returns elements that match a condition	arr.filter(x => x > 10)
+reduce()	Reduces array to a single value	arr.reduce((acc, val) => acc + val, 0)
+find()	Returns the first matching element	arr.find(x => x > 10)
+some()	Checks if at least one element matches	arr.some(x => x > 10)
+every()	Checks if all elements match	arr.every(x => x > 10)
+🔹 Example: Using Non-Modifying Methods
+code
+const numbers = [5, 10, 15, 20, 25];
+
+// Double each number
+const doubled = numbers.map(num => num * 2);
+console.log(doubled); // [10, 20, 30, 40, 50]
+
+// Filter numbers > 10
+const filtered = numbers.filter(num => num > 10);
+console.log(filtered); // [15, 20, 25]
+
+// Sum all numbers
+const sum = numbers.reduce((acc, num) => acc + num, 0);
+console.log(sum); // 75
+
+// Find first number > 10
+const found = numbers.find(num => num > 10);
+console.log(found); // 15
+✅ Real-World Scenario: Processing orders in an e-commerce store.
+
+🔹 Iterating Over Arrays
+1️⃣ forEach() – Executes a Function for Each Item
+code
+const users = ["Alice", "Bob", "Charlie"];
+
+users.forEach(user => {
+    console.log(`Hello, ${user}!`);
+});
+✔️ Best when you don’t need a new array.
+
+2️⃣ for..of Loop – Loops Over Values
+code
+const colors = ["red", "blue", "green"];
+
+for (let color of colors) {
+    console.log(color);
+}
+✔️ Simpler than forEach() when just reading values.
+
+3️⃣ for..in Loop – Loops Over Indexes (Not Recommended for Arrays)
+code
+const colors = ["red", "blue", "green"];
+
+for (let index in colors) {
+    console.log(index, colors[index]);
+}
+✔️ Better for objects than arrays.
+
+🔹 Advanced Array Techniques
+1️⃣ Removing Duplicates with Set
+code
+const numbers = [1, 2, 2, 3, 4, 4, 5];
+const uniqueNumbers = [...new Set(numbers)];
+console.log(uniqueNumbers); // [1, 2, 3, 4, 5]
+2️⃣ Flattening Nested Arrays
+code
+const nestedArray = [1, [2, 3], [4, [5, 6]]];
+const flatArray = nestedArray.flat(2);
+console.log(flatArray); // [1, 2, 3, 4, 5, 6]
+3️⃣ Sorting Objects in an Array
+code
+const users = [
+    { name: "Alice", age: 30 },
+    { name: "Bob", age: 25 },
+    { name: "Charlie", age: 35 }
+];
+
+users.sort((a, b) => a.age - b.age);
+console.log(users);
+✔️ Real-World Scenario: Sorting customers by age in a CRM.

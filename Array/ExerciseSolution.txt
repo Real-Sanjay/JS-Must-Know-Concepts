@@ -1,0 +1,23 @@
+1️⃣ Find the longest word in an array
+ 
+const words = ["apple", "banana", "strawberry", "kiwi"];
+
+const longestWord = words.reduce((longword, word)=> longword.length > word ? longword : word, "");
+console.log(longestWord);
+
+
+2️⃣ Convert an array of numbers to their squares
+
+const numbers = [2, 3, 4];
+numbers.map((number)=> number * number);
+console.log(numbers);
+
+
+3️⃣ Count occurrences of elements in an array
+const items = ["apple", "banana", "apple", "orange", "banana", "apple"];
+const ans = items.reduce((acc, item)=>{
+    acc[item] = (acc[item] ||0) +1;
+    return acc;
+}, {});
+
+console.log(ans);
