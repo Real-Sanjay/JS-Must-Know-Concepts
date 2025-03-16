@@ -1,0 +1,115 @@
+JavaScript Prototype 🚀
+In JavaScript, everything is an object (except primitive types like string, number, etc.). Prototype is a mechanism that allows objects to inherit properties and methods from other objects.
+
+🔹 What is Prototype?
+Each JavaScript object has a hidden internal property called [[Prototype]], which links to another object. This is how inheritance works in JavaScript.
+
+Every function in JavaScript has a prototype property, which is an object that contains properties and methods shared by instances created using that function.
+
+🔹 Example of Prototype Inheritance
+1️⃣ Without Prototype
+Code
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+const person1 = new Person("Sanjay", 25);
+const person2 = new Person("Amit", 30);
+
+console.log(person1.name); // Sanjay
+console.log(person2.name); // Amit
+✅ This works fine, but what if we want to add a common method to all Person objects?
+
+2️⃣ Using Prototype to Add Methods
+Instead of defining methods inside the constructor, we can attach them to the prototype to save memory.
+
+Code
+Person.prototype.greet = function () {
+    console.log(`Hello, my name is ${this.name}.`);
+};
+
+person1.greet(); // Hello, my name is Sanjay.
+person2.greet(); // Hello, my name is Amit.
+✅ Now, all Person instances inherit the greet() method without copying it into each object.
+
+🔹 Prototype Chain
+If a property/method is not found in the object, JavaScript looks up the prototype chain until it finds it or reaches null.
+
+Code
+console.log(person1.toString()); // [object Object]
+✔️ toString() is not defined in Person, so JavaScript looks up the prototype chain to Object.prototype, which defines toString().
+
+🔹 Checking an Object's Prototype
+1️⃣ Using __proto__
+Code
+console.log(person1.__proto__ === Person.prototype); // true
+console.log(Person.prototype.__proto__ === Object.prototype); // true
+console.log(Object.prototype.__proto__); // null
+✔️ The prototype chain ends at Object.prototype, which has null as its prototype.
+
+2️⃣ Using Object.getPrototypeOf()
+Code
+console.log(Object.getPrototypeOf(person1) === Person.prototype); // true
+🔹 Overriding Prototype Methods
+If an object has a method with the same name as one in the prototype, the object's method overrides the prototype method.
+
+Code
+Person.prototype.greet = function () {
+    console.log(`Hi, I am ${this.name}.`);
+};
+
+person1.greet(); // Hi, I am Sanjay.
+✔️ Now, greet() is updated for all Person instances.
+
+🔹 Prototype in Classes (class syntax)
+With ES6 classes, prototypes work behind the scenes.
+
+Code
+class Car {
+    constructor(brand) {
+        this.brand = brand;
+    }
+
+    showBrand() {
+        console.log(`This is a ${this.brand}.`);
+    }
+}
+
+const car1 = new Car("Toyota");
+car1.showBrand(); // This is a Toyota.
+
+console.log(Object.getPrototypeOf(car1) === Car.prototype); // true
+✔️ showBrand() is added to Car.prototype, not to each instance.
+
+🔹 Object Prototypes
+We can set the prototype of an object using Object.create().
+
+Code
+const animal = {
+    makeSound: function () {
+        console.log("Some generic sound...");
+    },
+};
+
+const dog = Object.create(animal);
+dog.bark = function () {
+    console.log("Woof!");
+};
+
+dog.makeSound(); // Some generic sound...
+dog.bark(); // Woof!
+✔️ dog inherits the makeSound() method from animal.
+
+🔹 Checking if an Object has a Property
+Use hasOwnProperty() to check if a property exists directly on an object (not inherited).
+
+Code
+console.log(dog.hasOwnProperty("bark")); // true
+console.log(dog.hasOwnProperty("makeSound")); // false (inherited)
+🔹 Key Takeaways
+✔️ Prototype allows objects to inherit properties/methods
+✔️ Every function has a prototype property
+✔️ Objects inherit from their prototype chain
+✔️ Use Object.create() for prototype-based inheritance
+✔️ Use hasOwnProperty() to check direct properties
