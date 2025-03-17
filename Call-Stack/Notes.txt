@@ -1,0 +1,157 @@
+📌 Call Stack in JavaScript
+🔹 What is the Call Stack?
+The Call Stack is a data structure used by JavaScript to manage function execution.
+
+It follows the LIFO (Last In, First Out) principle.
+Functions enter the stack when called and exit when execution completes.
+📌 Think of it as a stack of plates—the last plate added must be removed first!
+
+🔹 How the Call Stack Works (Step-by-Step Execution)
+Example 1: Simple Function Execution
+code
+function first() {
+  console.log("First function");
+}
+
+function second() {
+  console.log("Second function");
+}
+
+first();
+second();
+console.log("End");
+
+Call Stack Execution Flow:
+Step	Action
+first() is called	Added to the stack
+console.log("First function") runs	Prints output, then first() is removed
+second() is called	Added to the stack
+console.log("Second function") runs	Prints output, then second() is removed
+console.log("End") runs	Prints "End", stack is now empty
+
+✅ Output:
+
+First function
+Second function
+End
+✅ Final Stack: Empty
+
+🔹 Nested Function Calls in the Call Stack
+Example 2: Function Calls Inside Functions
+
+code
+function first() {
+  console.log("First function");
+  second();
+  console.log("First function finished");
+}
+
+function second() {
+  console.log("Second function");
+}
+
+first();
+console.log("End");
+Execution Flow
+1️⃣ first() is added to the stack
+2️⃣ Inside first(), console.log("First function") runs
+3️⃣ second() is called → Added to the stack
+4️⃣ console.log("Second function") runs, then second() is removed
+5️⃣ Back to first(), console.log("First function finished") runs
+6️⃣ first() completes → Removed from the stack
+7️⃣ console.log("End") runs
+
+✅ Output:
+
+
+First function
+Second function
+First function finished
+End
+✅ Final Stack: Empty
+
+🔹 Call Stack and Recursion
+The call stack is important in recursive functions (functions that call themselves).
+
+Example 3: Recursive Call Stack
+code
+function countdown(n) {
+  if (n === 0) {
+    console.log("Done!");
+    return;
+  }
+  console.log(n);
+  countdown(n - 1);
+}
+
+countdown(3);
+Execution Flow
+Step	Call Stack
+countdown(3)	countdown(3)
+console.log(3) runs	Prints 3
+countdown(2)	countdown(3) → countdown(2)
+console.log(2) runs	Prints 2
+countdown(1)	countdown(3) → countdown(2) → countdown(1)
+console.log(1) runs	Prints 1
+countdown(0)	countdown(3) → countdown(2) → countdown(1) → countdown(0)
+console.log("Done!") runs	Prints Done!, stack starts clearing
+Return from countdown(0)	countdown(3) → countdown(2) → countdown(1)
+Return from countdown(1)	countdown(3) → countdown(2)
+Return from countdown(2)	countdown(3)
+Return from countdown(3)	Stack is now empty
+
+✅ Output:
+
+
+3
+2
+1
+Done!
+
+
+🚨 Stack Overflow Error! If recursion doesn't have a stopping condition, it keeps adding function calls until stack overflow occurs.
+
+code
+function infiniteLoop() {
+  console.log("Running...");
+  infiniteLoop();
+}
+
+infiniteLoop(); // ❌ Stack Overflow Error
+🔴 JavaScript will crash because the stack never clears.
+
+🔹 Asynchronous Code & The Call Stack
+JavaScript is single-threaded, meaning it executes one function at a time in the call stack.
+
+However, asynchronous functions like setTimeout() do not block the call stack.
+
+Example 4: setTimeout and the Call Stack
+code
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Inside setTimeout");
+}, 0);
+
+console.log("End");
+Execution Flow
+Step	Action
+console.log("Start")	Prints "Start"
+setTimeout()	Moves to Web APIs, doesn't enter the call stack
+console.log("End")	Prints "End"
+setTimeout() finishes (after 0ms)	Moves to the Callback Queue
+Event Loop pushes it to the stack	Prints "Inside setTimeout"
+✅ Output:
+
+Inside setTimeout
+🔹 Even though setTimeout has 0ms, it executes last because the call stack executes synchronous code first.
+
+
+
+🎯 Summary
+✅ Call Stack follows LIFO (Last In, First Out).
+✅ Functions enter the stack when called and exit when completed.
+✅ Recursion can cause Stack Overflow if there's no exit condition.
+✅ Asynchronous operations (setTimeout, fetch) do not block the call stack.
+✅ Event Loop moves asynchronous functions back into the call stack when ready.
+

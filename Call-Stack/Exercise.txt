@@ -1,0 +1,49 @@
+🛠️ Exercises: Master Call Stack
+Exercise 1: Predict the Output
+code
+function one() {
+  console.log("One");
+  two();
+  console.log("One End");
+}
+
+function two() {
+  console.log("Two");
+  three();
+  console.log("Two End");
+}
+
+function three() {
+  console.log("Three");
+}
+
+one();
+console.log("End");
+✅ What is the output?
+
+Exercise 2: Debug Stack Overflow
+Fix this infinite recursion to prevent stack overflow:
+
+code
+function countdown(n) {
+  console.log(n);
+  countdown(n - 1);
+}
+
+countdown(5);
+✅ How can you fix it?
+
+Exercise 3: Understand Asynchronous Call Stack
+Predict the output of this:
+
+code
+console.log("A");
+
+setTimeout(() => console.log("B"), 1000);
+
+console.log("C");
+
+setTimeout(() => console.log("D"), 500);
+
+console.log("E");
+✅ What will be printed first?
