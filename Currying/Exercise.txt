@@ -1,0 +1,29 @@
+Exercise 1: Convert a Normal Function into a Curried Function
+code
+// Convert this normal function into a curried function:
+function greet(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
+}
+
+// Your solution here...
+
+Exercise 2: Create a Curried Function for Discount Calculation
+code
+// Implement a curried function for discount calculation.
+function discount(price, percentage) {
+  return price - (price * percentage) / 100;
+}
+
+const tenPercentDiscount = discount(100, 10);
+console.log(tenPercentDiscount); // Should return 90
+
+// Convert it into a curried function
+Exercise 3: Implement a Curried Function to Check Min Age
+code
+// Write a curried function that takes minAge and then a person’s age, 
+// and returns whether they are allowed to enter.
+function checkMinAge(minAge, age) {
+  return age >= minAge;
+}
+
+// Convert it into a curried function

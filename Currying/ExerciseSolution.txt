@@ -1,0 +1,29 @@
+Exercise 1 solution:
+
+function greet(firstName) {
+  return function (lastName) {
+   return `Hello, ${firstName} ${lastName}!`;
+  }
+}
+
+
+console.log(greet("chalsi")("john"));
+
+Exercise 2 solution:
+
+function discount(price) {
+  return (percentage)=>{
+    return price - (price * percentage) / 100;
+  }
+}
+
+const tenPercentDiscount = discount(100)(10);
+console.log(tenPercentDiscount); 
+
+Exercise 3 solution:
+
+function checkMinAge(minAge) {
+  return (age) => (age>= minAge) ? 'allowed' : 'not allowed';
+}
+
+console.log(checkMinAge(18) (11));
