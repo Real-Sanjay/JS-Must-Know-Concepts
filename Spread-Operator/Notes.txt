@@ -1,0 +1,89 @@
+JavaScript Spread Syntax (...) 🚀
+The spread syntax (...) allows expanding iterable elements (arrays, objects, strings) into individual elements. It is useful for copying, merging, and passing arguments to functions dynamically.
+
+🔹 1️⃣ Spread Syntax with Arrays
+1️⃣ Copying an Array
+Instead of using slice() or map(), you can copy an array easily:
+
+Code
+const numbers = [1, 2, 3];
+const copy = [...numbers];
+
+console.log(copy); // [1, 2, 3]
+console.log(copy === numbers); // false (different memory references)
+✔️ Spread creates a new array, not a reference to the original.
+
+2️⃣ Merging Arrays
+Instead of using .concat(), spread makes merging easier:
+
+Code
+const arr1 = [1, 2];
+const arr2 = [3, 4];
+
+const merged = [...arr1, ...arr2];
+console.log(merged); // [1, 2, 3, 4]
+
+3️⃣ Adding Elements in Between
+Code
+const arr = [1, 2, 5, 6];
+const newArr = [...arr.slice(0, 2), 3, 4, ...arr.slice(2)];
+
+console.log(newArr); // [1, 2, 3, 4, 5, 6]
+✔️ Easily insert elements without modifying the original array.
+
+
+4️⃣ Passing Elements as Arguments
+Code
+function sum(a, b, c) {
+    return a + b + c;
+}
+
+const nums = [1, 2, 3];
+console.log(sum(...nums)); // 6
+
+
+✔️ Instead of manually passing each argument, spread unpacks them.
+
+🔹 2️⃣ Spread Syntax with Objects
+
+1️⃣ Copying an Object
+Code
+const obj1 = { name: "Sanjay", age: 25 };
+const obj2 = { ...obj1 };
+
+console.log(obj2); // { name: "Sanjay", age: 25 }
+console.log(obj1 === obj2); // false (different objects)
+2️⃣ Merging Objects
+Instead of Object.assign(), spread is simpler:
+
+Code
+const objA = { a: 1, b: 2 };
+const objB = { c: 3, d: 4 };
+
+const mergedObj = { ...objA, ...objB };
+console.log(mergedObj); // { a: 1, b: 2, c: 3, d: 4 }
+3️⃣ Overriding Properties
+Later properties overwrite earlier ones:
+
+Code
+const person = { name: "John", age: 30 };
+const updatedPerson = { ...person, age: 35 };
+
+console.log(updatedPerson); // { name: "John", age: 35 }
+✔️ age: 35 replaces age: 30.
+
+🔹 3️⃣ Spread with Strings
+Code
+const word = "Hello";
+const letters = [...word];
+
+console.log(letters); // ['H', 'e', 'l', 'l', 'o']
+✔️ Works on strings to convert them into arrays.
+
+🔹 4️⃣ Removing Duplicates with Spread + Set
+Code
+const numbers = [1, 2, 2, 3, 4, 4, 5];
+const uniqueNumbers = [...new Set(numbers)];
+
+console.log(uniqueNumbers); // [1, 2, 3, 4, 5]
+✔️ Spread + Set is a great way to remove duplicates.

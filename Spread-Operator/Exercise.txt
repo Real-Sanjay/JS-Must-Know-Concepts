@@ -1,0 +1,122 @@
+1️⃣ What’s the Output?
+Predict the output before running the code:
+const numbers1 = [1, 2, 3];
+const numbers2 = [4, 5];
+
+const merged = [...numbers1, ...numbers2, 6];
+console.log(merged);
+
+
+2️⃣ What happens here?
+
+const person1 = { name: "Alice", age: 30 };
+const person2 = { age: 35, city: "New York" };
+
+const updatedPerson = { ...person1, ...person2 };
+console.log(updatedPerson);
+
+3️⃣ Fix the Function
+The following function does not work correctly. Can you fix it using spread syntax?
+
+function joinArrays(arr1, arr2) {
+    return arr1.concat(arr2);
+}
+
+console.log(joinArrays([1, 2], [3, 4]));
+➡ Rewrite it using ... spread syntax.
+
+
+4️⃣ Merge Two Objects But Keep Unique Keys
+
+const obj1 = { a: 1, b: 2, c: 3 };
+const obj2 = { b: 4, d: 5 };
+
+const merged = { /* Your code here */ };
+console.log(merged);
+
+✅ Expected Output: { a: 1, b: 4, c: 3, d: 5 }
+Hint: Properties from obj2 should override obj1.
+
+
+5️⃣ Remove Duplicate Elements from an Array
+const numbers = [1, 2, 2, 3, 4, 4, 5, 5];
+
+const uniqueNumbers = /* Your solution here */;
+console.log(uniqueNumbers);
+✅ Expected Output: [1, 2, 3, 4, 5]
+Hint: Use Set.
+
+
+6️⃣ Insert an Element in the Middle of an Array
+const arr = [1, 2, 4, 5];
+
+// Insert 3 between 2 and 4 using spread
+const newArr = /* Your solution here */;
+
+console.log(newArr);
+✅ Expected Output: [1, 2, 3, 4, 5]
+
+
+7️⃣ Update User Profile Without Changing the Original Object
+You have a user object. Create a new object with an updated email but without modifying the original:
+
+const user = { id: 101, name: "John", email: "old@email.com" };
+
+// Update email without modifying `user`
+const updatedUser = /* Your solution here */;
+
+console.log(updatedUser);
+console.log(user); // Should still have old email
+✅ Hint: Use spread syntax.
+
+8️⃣ Merge Multiple Objects into One
+
+const settings1 = { theme: "dark", notifications: true };
+const settings2 = { fontSize: "14px", notifications: false };
+const settings3 = { language: "English" };
+
+const finalSettings = /* Your solution here */;
+
+console.log(finalSettings);
+✅ Expected Output:
+{ theme: "dark", notifications: false, fontSize: "14px", language: "English" }
+Why is notifications false? 🤔
+
+
+9️⃣ Convert a String to an Array Without split()
+const word = "JavaScript";
+
+const letters = /* Your solution here */;
+console.log(letters);
+✅ Expected Output:
+["J", "a", "v", "a", "S", "c", "r", "i", "p", "t"]
+
+
+
+🔟 Clone an Object Without Affecting Nested Objects
+
+const user = {
+  name: "Alice",
+  details: { age: 25, city: "Paris" }
+};
+
+// Create a copy
+const userCopy = /* Your solution here */;
+
+// Modify the copy
+userCopy.details.age = 30;
+
+console.log(user.details.age); // Should still be 25, not 30!
+
+
+
+ Bonus: Fun Challenge 🎯
+Write a function that merges multiple arrays and removes duplicates:
+
+
+function mergeAndUnique(...arrays) {
+    // Your solution here
+}
+
+console.log(mergeAndUnique([1, 2, 3], [2, 3, 4], [4, 5, 6]));
+✅ Expected Output: [1, 2, 3, 4, 5, 6]

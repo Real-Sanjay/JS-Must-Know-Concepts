@@ -1,3 +1,7 @@
+https://youtu.be/wstwjQ1yqWQ?si=gP-dDDzwWsdzLj1S
+
+
+
 --> What is Inheritance of an Object in Javascript?
   When a new object is trying to access properties and methods of another old object, because this new object might be created from the old objects reference.
 Example :

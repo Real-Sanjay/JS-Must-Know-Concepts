@@ -1,16 +1,7 @@
-function Animal(name) {
-    this.name = name;
+function mergeAndUnique(...arrays) {
+   const Marray =  [].concat(...arrays);
+  const mergedarray=  [...new Set(Marray)];
+  return mergedarray;
 }
 
-Animal.prototype.makeSound = function () {
-    console.log("Some generic sound");
-};
-
-const cat = new Animal("Kitty");
-cat.makeSound = function () {
-    console.log("Meow!");
-};
-
-cat.makeSound(); 
-delete cat.makeSound;
-cat.makeSound();
+console.log(mergeAndUnique([1, 2, 3], [2, 3, 4], [4, 5, 6]));
