@@ -1,0 +1,33 @@
+🛠️ Exercises: Practice Arrow Functions
+1️⃣ Convert these regular functions to arrow functions
+
+code
+function multiply(a, b) {
+    return a * b;
+}
+
+function isEven(n) {
+    return n % 2 === 0;
+}
+
+function greet(name) {
+    return "Hello, " + name + "!";
+}
+2️⃣ Use an arrow function inside setTimeout to log "Delayed Message" after 2 seconds
+
+3️⃣ Use an arrow function inside map to transform an array of names into uppercase
+
+code
+const names = ["Alice", "Bob", "Charlie"];
+// Your code here
+4️⃣ Fix the incorrect use of this in an arrow function
+
+code
+const obj = {
+    value: 10,
+    increment: () => {
+        this.value++; // ❌ Fix this
+        console.log(this.value);
+    }
+};
+obj.increment();

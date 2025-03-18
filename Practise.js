@@ -1,5 +1,4 @@
-function checkMinAge(minAge) {
-  return (age) => (age>= minAge) ? 'allowed' : 'not allowed';
+function sum(...args) {
+  console.log(...args); // ✅ Works
 }
-
-console.log(checkMinAge(18) (11));
+sum(1, 2, 3);
