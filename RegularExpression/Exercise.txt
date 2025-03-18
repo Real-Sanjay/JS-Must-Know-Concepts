@@ -1,0 +1,23 @@
+🛠️ Exercises: Master RegExp
+
+Exercise 1: Find All Words
+Find all words in the string "Hello world, welcome to JavaScript."
+
+code
+const sentence = "Hello world, welcome to JavaScript.";
+// Your code here
+
+Exercise 2: Validate a URL
+Write a RegExp to validate a URL (like "https://example.com").
+
+Exercise 3: Remove Extra Spaces
+Replace multiple spaces with a single space.
+
+code
+const str = "Hello    world   !";
+
+Exercise 4: Mask Credit Card Number
+Convert "1234-5678-9876-5432" to "****-****-****-5432".
+
+Exercise 5: Extract Dates
+Find all dates in "Today is 12/02/2023, tomorrow is 13/02/2023."

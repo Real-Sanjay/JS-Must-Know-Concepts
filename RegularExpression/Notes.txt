@@ -1,0 +1,142 @@
+📌 JavaScript Regular Expressions (RegExp)
+🔹 What is RegExp?
+A regular expression (RegExp) is a sequence of characters that forms a search pattern. It is used for pattern matching and text manipulation.
+
+Use cases: ✅ Validating email, phone numbers, and passwords
+✅ Searching and replacing text in strings
+✅ Extracting data from text
+
+🔹 Creating a Regular Expression
+You can create a RegExp in two ways:
+
+1️⃣ Using a RegExp literal (/pattern/flags)
+
+code
+const regex = /hello/i; // 'i' makes it case insensitive
+2️⃣ Using the RegExp constructor
+
+code
+const regex = new RegExp("hello", "i");
+🔹 RegExp Flags
+Flag	Description
+g	Global match (find all matches)
+i	Case insensitive search
+m	Multi-line matching
+s	Dot (.) matches newlines
+u	Unicode support
+y	"Sticky" search
+🔹 Example: Using flags
+
+code
+const regex = /hello/gi; // 'g' - global, 'i' - case insensitive
+console.log("Hello world".match(regex)); // Output: ["Hello"]
+🔹 RegExp Methods
+Method	Description
+test()	Returns true or false if there is a match
+exec()	Returns an array of matches (or null)
+match()	Used with strings to find matches
+replace()	Replaces matched substrings
+search()	Returns index of the first match
+split()	Splits a string using a regex
+Example 1: test() Method
+
+code
+const regex = /hello/i;
+console.log(regex.test("Hello world")); // ✅ true
+console.log(regex.test("Hi there")); // ❌ false
+
+Example 2: exec() Method
+
+code
+const regex = /(\d{2})-(\d{2})-(\d{4})/;
+const result = regex.exec("Today's date is 15-08-2023.");
+console.log(result);
+/* Output:
+[
+  '15-08-2023',
+  '15',
+  '08',
+  '2023',
+  index: 16,
+  input: "Today's date is 15-08-2023.",
+  groups: undefined
+]
+*/
+
+Example 3: match() Method
+
+code
+
+const text = "apple, banana, apple, orange";
+const regex = /apple/g;
+console.log(text.match(regex)); // ✅ ["apple", "apple"]
+Example 4: replace() Method
+code
+const sentence = "I like cats. Cats are cute.";
+console.log(sentence.replace(/cats/gi, "dogs"));
+// ✅ Output: "I like dogs. Dogs are cute."
+
+Example 5: search() Method
+
+code
+const sentence = "I love JavaScript!";
+console.log(sentence.search(/JavaScript/)); // ✅ Output: 7 (index of match)
+🔹 Common Regular Expressions
+Pattern	Meaning	Example Match
+\d	Any digit (0-9)	123, 9
+\D	Non-digit character	A, hello
+\w	Word character (letters, numbers, _)	hello_123
+\W	Non-word character	!@#, .
+\s	Whitespace (space, tab, newline)	" "
+\S	Non-whitespace character	"A"
+^	Start of string	^hello matches "hello world"
+$	End of string	world$ matches "hello world"
+.*	Matches anything (greedy)	hello.*world matches "hello...world"
++	One or more occurrences	\d+ matches "123", "9"
+*	Zero or more occurrences	A* matches "AA", ""
+{n}	Exactly n occurrences	\d{3} matches "123" but not "12"
+[abc]	Any character in the set	[aeiou] matches "a", "e"
+[^abc]	Any character NOT in the set	[^0-9] matches "A", "!"
+`(abc	xyz)`	Matches either abc or xyz
+
+
+🔹 Real-World Examples
+
+✅ 1. Validate an Email
+
+code
+
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+console.log(emailRegex.test("test@example.com")); // ✅ true
+console.log(emailRegex.test("invalid-email")); // ❌ false
+
+✅ 2. Validate a Phone Number
+
+code
+
+const phoneRegex = /^\d{10}$/;
+console.log(phoneRegex.test("9876543210")); // ✅ true
+console.log(phoneRegex.test("98765-43210")); // ❌ false
+
+
+✅ 3. Extract All Numbers from a String
+
+code
+
+const text = "The price is 200 and the discount is 50.";
+const numbers = text.match(/\d+/g);
+console.log(numbers); // ✅ ["200", "50"]
+
+✅ 4. Validate a Password (At least 8 characters, one number, one uppercase)
+code
+
+const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+console.log(passwordRegex.test("StrongPass1")); // ✅ true
+console.log(passwordRegex.test("weakpass")); // ❌ false
+
+
+🎯 Summary
+✅ RegExp helps with pattern matching and text manipulation.
+✅ Methods like test(), exec(), match(), and replace() are useful for string operations.
+✅ Common use cases include validation (emails, phone numbers), searching, and replacing text.
+
