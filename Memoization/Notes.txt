@@ -1,0 +1,90 @@
+Memoization 
+🔹 What is Memoization?
+Memoization is a technique used to optimize functions by caching their results. If a function is called with the same inputs, the stored result is returned instead of recomputing.
+
+📌 Why use Memoization?
+✅ Speeds up repeated function calls
+✅ Reduces unnecessary computations
+✅ Useful in recursion and expensive calculations
+
+🔹 Example: Without Memoization
+Consider a function that calculates the factorial of a number:
+
+code
+function factorial(n) {
+    if (n === 0 || n === 1) return 1;
+    return n * factorial(n - 1);
+}
+
+console.log(factorial(5)); // ✅ Output: 120
+console.log(factorial(5)); // ❌ Recalculates again
+Problem: Every time factorial(5) is called, it recomputes everything.
+
+🔹 Implementing Memoization
+We use an object (cache) to store previously computed values.
+
+code
+function memoizedFactorial() {
+    let cache = {}; // Store previous results
+
+    return function factorial(n) {
+        if (n in cache) {
+            console.log("Fetching from cache:", n);
+            return cache[n]; // Return cached value
+        }
+
+        console.log("Calculating:", n);
+        if (n === 0 || n === 1) return 1;
+
+        cache[n] = n * factorial(n - 1); // Store result in cache
+        return cache[n];
+    };
+}
+
+const fact = memoizedFactorial(); // Create a memoized function
+
+console.log(fact(5)); // ✅ Calculates
+console.log(fact(5)); // ✅ Fetches from cache (much faster!)
+
+🔹 Generalized Memoization Function
+We can create a higher-order function to memoize any function.
+
+code
+function memoize(fn) {
+    let cache = {};
+
+    return function (...args) {
+        let key = JSON.stringify(args); // Convert arguments to string
+        if (key in cache) {
+            console.log("Fetching from cache:", key);
+            return cache[key];
+        }
+
+        console.log("Calculating:", key);
+        let result = fn(...args);
+        cache[key] = result; // Store result in cache
+        return result;
+    };
+}
+
+// Example: Fibonacci sequence with memoization
+function fibonacci(n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+const memoizedFibonacci = memoize(fibonacci);
+console.log(memoizedFibonacci(10)); // ✅ Calculates
+console.log(memoizedFibonacci(10)); // ✅ Fetches from cache
+🔹 When to Use Memoization?
+✅ Recursive functions (Factorial, Fibonacci)
+✅ Expensive calculations (Math-heavy operations)
+✅ Fetching API data (Avoid unnecessary network requests)
+✅ Processing large datasets
+
+
+🎯 Summary
+✅ Memoization stores function results to improve performance.
+✅ Avoids redundant calculations, making functions faster.
+✅ Works best for recursion, expensive calculations, and API requests.
+
