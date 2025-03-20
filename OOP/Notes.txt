@@ -1,0 +1,99 @@
+🔹 OOP Concepts in JavaScript
+✅ 1️⃣ Encapsulation (Hiding Data)
+Encapsulation ensures that an object's internal data is protected from direct modification.
+
+code
+class BankAccount {
+    #balance; // Private property
+
+    constructor(initialBalance) {
+        this.#balance = initialBalance;
+    }
+
+    deposit(amount) {
+        this.#balance += amount;
+    }
+
+    getBalance() {
+        return this.#balance;
+    }
+}
+
+const account = new BankAccount(1000);
+account.deposit(500);
+console.log(account.getBalance()); // ✅ Output: 1500
+console.log(account.#balance); // ❌ Error: Private field '#balance' must be declared in an enclosing class
+
+✅ 2️⃣ Inheritance (Extending a Class)
+code
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    speak() {
+        return `${this.name} makes a sound.`;
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        return `${this.name} barks.`;
+    }
+}
+
+const dog = new Dog("Buddy");
+console.log(dog.speak()); // ✅ Output: Buddy barks.
+
+✅ 3️⃣ Polymorphism (Method Overriding)
+code
+class Shape {
+    area() {
+        return "Calculating area...";
+    }
+}
+
+class Square extends Shape {
+    constructor(side) {
+        super();
+        this.side = side;
+    }
+
+    area() {
+        return this.side * this.side;
+    }
+}
+
+const square = new Square(4);
+console.log(square.area()); // ✅ Output: 16
+
+✅ 4️⃣ Abstraction (Hiding Details)
+code
+class Vehicle {
+    constructor(name) {
+        if (this.constructor === Vehicle) {
+            throw new Error("Abstract classes can't be instantiated.");
+        }
+        this.name = name;
+    }
+
+    move() {
+        throw new Error("Method 'move()' must be implemented.");
+    }
+}
+
+class Car extends Vehicle {
+    move() {
+        return `${this.name} drives on the road.`;
+    }
+}
+
+const myCar = new Car("Toyota");
+console.log(myCar.move()); // ✅ Output: Toyota drives on the road.
+
+
+🎯 Summary
+✅ Encapsulation hides object data using private fields (#property).
+✅ Abstraction defines abstract methods that must be implemented in child classes.
+✅ Inheritance allows a class to inherit from another class (extends).
+✅ Polymorphism lets child classes override parent class methods

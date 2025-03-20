@@ -1,0 +1,40 @@
+
+1️⃣ Destructure the array to extract only the first and third elements
+
+const fruits = ["apple", "banana", "mango", "orange"];
+
+const [fruit1, , fruit2, ] = fruits;
+
+console.log("fruit 1 is " + fruit1 + " fruit 2 is " + fruit2)
+
+
+2️⃣ Destructure this object and rename fullName to name
+
+const user = { fullName: "Eve Carter", age: 22, country: "Canada" };
+
+const {fullName: name, age, country} = user;
+
+console.log("full name after name change is " + name + " rest of the value: " + age, country);
+
+3️⃣ Use destructuring in a function parameter to extract name and age from the object
+
+const person = { name: "Daniel", age: 40 };
+
+function personDetails({ name, age }) {
+  console.log("Person is " + name + " age is " + age);
+}
+
+personDetails(person);
+
+4️⃣ Extract values from this nested object
+
+const company = {
+  name: "TechCorp",
+  location: {
+      country: "USA",
+      city: "San Francisco"
+  }
+};
+
+const {name, location:{country, city}} = company;
+console.log(`name is ${name}, location is ${country} country and city ${city}`);

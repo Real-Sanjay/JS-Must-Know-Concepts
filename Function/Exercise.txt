@@ -1,0 +1,7 @@
+🛠️ Exercises: Practice Functions
+1️⃣ Write a function that takes two numbers and returns their product.
+
+2️⃣ Create an arrow function that checks if a number is even or odd.
+
+3️⃣ Write a function that takes a callback and calls it after 3 seconds.
+

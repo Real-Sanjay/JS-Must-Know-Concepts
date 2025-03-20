@@ -1,0 +1,8 @@
+🛠️ Exercises: Practice JavaScript Modules
+1️⃣ Create a module named calculator.js that exports add, subtract, multiply, and divide functions. Import it in main.js and use them.
+
+
+2️⃣ Create a default export function greet(name) in greet.js and import it in main.js
+
+
+3️⃣ Use dynamic import to load a module when a button is clicked.

@@ -1,0 +1,16 @@
+🛠️ Exercises: Practice JavaScript Objects
+1️⃣ Create an Object Using Different Methods
+Create an object person with name, age, and greet() method.
+Use different methods (literal, constructor, Object.create(), class).
+
+2️⃣ Merge Two Objects Without Modifying the Originals
+Given two objects, merge them into a new object.
+
+3️⃣ Freeze an Object and Try Modifying It
+Use Object.freeze() and try adding new properties.
+
+4️⃣ Implement a Deep Copy Function Without JSON Methods
+Write a function that deeply clones an object using recursion.
+
+5️⃣ Use Object.entries() to Convert an Object to an Array and Back
+Convert { name: "Alice", age: 25 } to [['name', 'Alice'], ['age', 25]] and back.

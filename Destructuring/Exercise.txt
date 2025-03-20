@@ -1,0 +1,27 @@
+Exercises: Practice Destructuring
+1️⃣ Destructure the array to extract only the first and third elements
+
+code
+const fruits = ["apple", "banana", "mango", "orange"];
+// Your code here
+2️⃣ Destructure this object and rename fullName to name
+
+code
+const user = { fullName: "Eve Carter", age: 22, country: "Canada" };
+// Your code here
+3️⃣ Use destructuring in a function parameter to extract name and age from the object
+
+code
+const person = { name: "Daniel", age: 40 };
+// Your function here
+4️⃣ Extract values from this nested object
+
+code
+const company = {
+    name: "TechCorp",
+    location: {
+        country: "USA",
+        city: "San Francisco"
+    }
+};
+// Extract country and city

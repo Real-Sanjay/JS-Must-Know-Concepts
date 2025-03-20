@@ -1,0 +1,17 @@
+🔹 Exercises: Practice JavaScript OOP
+1️⃣ Create a Class for a Student
+Properties: name, age, grade
+Method: study(), which logs "Studying..."
+2️⃣ Implement a Bank Account Class with Encapsulation
+Private property balance
+Methods: deposit(), withdraw(), getBalance()
+3️⃣ Create an Inheritance Structure
+Parent class: Employee (Properties: name, salary)
+Child class: Manager (Property: teamSize)
+Method getDetails(): Log employee details.
+4️⃣ Override a Method Using Polymorphism
+Parent class: Shape (Method: area())
+Child classes: Circle and Rectangle, overriding area().
+5️⃣ Implement an Abstract Class
+Abstract class: Appliance
+Subclasses: WashingMachine, Refrigerator, implementing turnOn().

@@ -1,0 +1,116 @@
+📌 Functions in JavaScript
+🔹 What is a Function?
+A function is a reusable block of code that performs a specific task.
+
+✅ Function Syntax:
+
+code
+function functionName(parameters) {
+    // Function body
+    return value; // Optional
+}
+✅ Example: Function with Parameters and Return Value
+
+code
+function add(a, b) {
+    return a + b;
+}
+
+console.log(add(5, 10)); // ✅ Output: 15
+
+🔹 Types of Functions in JavaScript
+
+1️⃣ Function Declaration (Named Function)
+
+code
+
+function greet() {
+    console.log("Hello, World!");
+}
+
+greet(); // ✅ Output: Hello, World!
+
+
+2️⃣ Function Expression (Anonymous Function)
+
+code
+
+const multiply = function (a, b) {
+    return a * b;
+};
+console.log(multiply(4, 5)); // ✅ Output: 20
+
+3️⃣ Arrow Function
+
+code
+
+const square = (x) => x * x;
+console.log(square(6)); // ✅ Output: 36
+
+📌 Arrow functions with multiple parameters & return statement
+
+code
+
+const subtract = (a, b) => {
+    return a - b;
+};
+
+console.log(subtract(10, 3)); // ✅ Output: 7
+
+🔹 Function Parameters & Arguments
+✅ Default Parameters
+
+code
+function greet(name = "Guest") {
+    console.log(`Hello, ${name}!`);
+}
+greet("Alice"); // ✅ Output: Hello, Alice!
+greet(); // ✅ Output: Hello, Guest!
+
+✅ Rest Parameters (...args)
+
+code
+function sum(...numbers) {
+    return numbers.reduce((acc, num) => acc + num, 0);
+}
+console.log(sum(1, 2, 3, 4, 5)); // ✅ Output: 15
+
+✅ Passing Functions as Arguments (Higher-Order Functions)
+
+code
+function applyFunction(a, b, operation) {
+    return operation(a, b);
+}
+
+const add = (x, y) => x + y;
+console.log(applyFunction(3, 4, add)); // ✅ Output: 7
+🔹 Callback Functions
+
+✅ A function passed as an argument to another function
+
+code
+function fetchData(callback) {
+    setTimeout(() => {
+        callback("Data loaded!");
+    }, 2000);
+}
+
+fetchData((data) => {
+    console.log(data); // ✅ Output after 2s: Data loaded!
+});
+🔹 Immediately Invoked Function Expressions (IIFE)
+
+✅ Function that runs immediately after being defined
+
+code
+(function () {
+    console.log("IIFE executed!");
+})(); // ✅ Output: IIFE executed!
+
+
+
+🎯 Summary
+✅ Functions help in code reusability and better organization
+✅ Different function types: Declaration, Expression, Arrow Functions
+✅ Functions can have default parameters, rest parameters, and callbacks
+✅ IIFE allows immediate execution of functions
