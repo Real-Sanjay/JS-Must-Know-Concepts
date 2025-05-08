@@ -1,13 +1,87 @@
 🔹 Exercises
+– Level Up from Basics to Expert
+
+Beginner – Foundation Builders
 1️⃣ Find the longest word in an array
- 
 const words = ["apple", "banana", "strawberry", "kiwi"];
 
-
-2️⃣ Convert an array of numbers to their squares
-
+2️⃣ Convert numbers to their squares
 const numbers = [2, 3, 4];
 
-3️⃣ Count occurrences of elements in an array
-
+3️⃣ Count occurrences of elements
 const items = ["apple", "banana", "apple", "orange", "banana", "apple"];
+
+4️⃣ Filter even numbers from an array
+const nums = [1, 2, 3, 4, 5, 6];
+
+5️⃣ Find the sum of all numbers in an array
+const nums = [5, 10, 15];
+
+6️⃣ Find the maximum number in an array
+const nums = [12, 45, 78, 2, 89, 33];
+
+7️⃣ Remove duplicates from an array
+const fruits = ["apple", "banana", "apple", "orange", "banana"];
+
+
+
+Intermediate – Deeper Logic Practice
+
+8️⃣ Flatten a nested array (1-level deep)
+const nested = [1, [2, 3], 4, [5, 6]];
+
+9️⃣ Reverse an array without using reverse()
+const original = [1, 2, 3, 4, 5];
+
+🔟 Check if all elements in an array are numbers
+const mixed = [1, 2, 3, "4", 5];
+
+
+1️⃣1️⃣ Find the frequency of each character in a string
+const str = "javascript";
+
+1️⃣2️⃣ Get all names from an array of user objects
+const users = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 },
+  { name: "Charlie", age: 28 }
+];
+
+1️⃣3️⃣ Sort an array of strings by length
+const words = ["apple", "banana", "kiwi", "strawberry"];
+
+1️⃣4️⃣ Find common elements between two arrays
+const arr1 = [1, 2, 3, 4];
+const arr2 = [3, 4, 5, 6];
+
+
+Advanced – Real-World Style Challenges
+
+1️⃣5️⃣ Group objects by a key
+const people = [
+  { name: "Alice", role: "admin" },
+  { name: "Bob", role: "user" },
+  { name: "Charlie", role: "admin" },
+  { name: "Dave", role: "user" }
+];
+
+➡️ Output should group by role.
+
+1️⃣6️⃣ Chunk an array into smaller arrays of size n
+const data = [1, 2, 3, 4, 5, 6, 7];
+const size = 3;
+
+
+1️⃣7️⃣ Calculate the average from an array of numbers
+const marks = [80, 90, 100, 70, 60];
+
+1️⃣8️⃣ Check if array is a palindrome
+const arr = [1, 2, 3, 2, 1];
+
+1️⃣9️⃣ Remove falsy values (false, null, 0, "", undefined, NaN)
+const values = [0, "hello", false, 42, "", null, "world"];
+
+2️⃣0️⃣ Custom map() method (polyfill)
+Array.prototype.myMap = function(callback) {
+  // Your logic here
+};

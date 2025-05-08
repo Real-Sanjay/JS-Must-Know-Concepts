@@ -2,9 +2,13 @@
  
 const words = ["apple", "banana", "strawberry", "kiwi"];
 
-const longestWord = words.reduce((longword, word)=> longword.length > word ? longword : word, "");
-console.log(longestWord);
+let  longestWord ='';
 
+words.forEach((val)=> {
+  longestWord = longestWord.length> val.length ? longestWord: val;
+})
+
+console.log(longestWord);
 
 2️⃣ Convert an array of numbers to their squares
 
@@ -21,3 +25,232 @@ const ans = items.reduce((acc, item)=>{
 }, {});
 
 console.log(ans);
+
+
+4️⃣ Filter even numbers from an array
+const nums = [1, 2, 3, 4, 5, 6];
+const evenNo = nums.filter((val) => val % 2 == 0);
+console.log(evenNo)
+
+
+5️⃣ Find the sum of all numbers in an array
+const nums = [5, 10, 15];
+
+const totalSum = nums.reduce((sum, val)=> {
+ return sum += val;
+},0)
+console.log(totalSum);
+
+
+6️⃣ Find the maximum number in an array
+const nums = [12, 45, 78, 2, 89, 33];
+const maxNo = nums.reduce((max, currVal)=> max > currVal ? max : currVal);
+console.log(maxNo)
+
+7️⃣ Remove duplicates from an array
+const fruits = ["apple", "banana", "apple", "orange", "banana"];
+
+const uniqFruits = new Set(fruits)
+console.log(uniqFruits);
+
+method2: 
+const uniqFruits = fruits.filter((item, index) => fruits.indexOf(item) === index);
+console.log(uniqFruits)
+
+mthod3: 
+const uniqFruits = fruits.reduce((acc, item)=>{
+  if(!acc.includes(item)){
+    acc.push(item);
+  }
+  return acc;
+}, [])
+console.log(uniqFruits);
+
+method4: 
+
+
+const uniqFruits = [];
+const seenFruits = {};
+
+fruits.forEach((item)=>{
+
+if(!seenFruits[item]){
+  seenFruits[item] = true;
+  uniqFruits.push(item);
+}
+})
+
+
+8️⃣ Flatten a nested array (1-level deep)
+const nested = [1, [2, 3], 4, [5, 6]];
+
+
+There are several ways to flatten a nested array (1-level deep) in JavaScript. Here are a few common methods:
+
+1. Using Array.prototype.flat()
+The flat method can be used to flatten an array to a specified depth.
+const flattened = nested.flat();
+console.log(flattened); // Output: [1, 2, 3, 4, 5, 6]
+
+
+2. Using Array.prototype.concat()
+You can use concat along with the spread operator to flatten the array.
+const flattened = [].concat(...nested);
+console.log(flattened); // Output: [1, 2, 3, 4, 5, 6]
+
+
+3. Using Array.prototype.reduce()
+The reduce method can be used to accumulate the elements into a single array.
+const flattened = nested.reduce((acc, val) => acc.concat(val), []);
+console.log(flattened); // Output: [1, 2, 3, 4, 5, 6]
+
+
+4. Using Array.prototype.forEach()
+You can manually iterate through the array and push elements into a new array.
+const flattened = [];
+nested.forEach(val => {
+  if (Array.isArray(val)) {
+    flattened.push(...val);
+  } else {
+    flattened.push(val);
+  }
+});
+console.log(flattened); // Output: [1, 2, 3, 4, 5, 6]
+
+
+5. Using Array.prototype.map() and Array.prototype.concat()
+Combining map and concat can also achieve the flattening.
+const flattened = [].concat(...nested.map(val => val));
+console.log(flattened); // Output: [1, 2, 3, 4, 5, 6]
+
+
+
+9️⃣ Reverse an array without using reverse()
+const original = [1, 2, 3, 4, 5];
+
+1. Using a for Loop
+You can use a for loop to create a new array with elements in reverse order.
+const original = [1, 2, 3, 4, 5];
+const reversed = [];
+for (let i = original.length - 1; i >= 0; i--) {
+  reversed.push(original[i]);
+}
+console.log(reversed); // Output: [5, 4, 3, 2, 1]
+
+
+2. Using reduceRight()
+The reduceRight method can be used to accumulate elements in reverse order.
+const original = [1, 2, 3, 4, 5];
+const reversed = original.reduceRight((acc, val) => {
+  acc.push(val);
+  return acc;
+}, []);
+console.log(reversed); // Output: [5, 4, 3, 2, 1]
+
+
+3. Using Array.prototype.map() and Array.prototype.concat()
+You can map the array and concatenate elements in reverse order.
+const original = [1, 2, 3, 4, 5];
+const reversed = original.map((_, i, arr) => arr[arr.length - 1 - i]);
+console.log(reversed); // Output: [5, 4, 3, 2, 1]
+
+4. Using Array.prototype.sort()
+You can use the sort method with a custom comparator to reverse the array.
+
+const original = [1, 2, 3, 4, 5];
+const reversed = original.slice().sort((a, b) => b - a);
+console.log(reversed); // Output: [5, 4, 3, 2, 1]
+
+
+🔟 Check if all elements in an array are numbers
+const mixed = [1, 2, 3, "4", 5];
+
+const allNumbers = mixed.every(element => typeof element === 'number');
+console.log(allNumbers); // Output: false
+
+
+
+1️⃣1️⃣ Find the frequency of each character in a string
+const str = "javascript";
+
+const ans = Array.from(str).reduce((acc, val)=> {
+acc[val] = (acc[val] | 0)+1;
+return acc;
+},{})
+
+console.log(ans)
+
+
+or using map
+
+const frequency = new Map();
+
+for (let char of str) {
+  frequency.set(char, (frequency.get(char) || 0) + 1);
+}
+
+console.log(Object.fromEntries(frequency)); // Output: { j: 1, a: 2, v: 1, s: 1, c: 1, r: 1, i: 1, p: 1, t: 1 }
+
+
+1️⃣2️⃣ Get all names from an array of user objects
+const users = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 },
+  { name: "Charlie", age: 28 }
+];
+
+let ans = []
+users.forEach((val)=> ans.push(val.name))
+console.log(ans)
+
+
+1️⃣3️⃣ Sort an array of strings by length
+const words = ["apple", "banana", "kiwi", "strawberry"];
+
+let wordLenMap = new Map();
+
+for (let word of words) {
+  wordLenMap.set(word, word.length);
+}
+console.log(wordLenMap);
+
+const sortedWord = [];
+const mapArray = Array.from(wordLenMap)
+
+for (let i = 0; i < mapArray.length; i++) {
+  for (let j = 0; j < mapArray.length-i-1; j++) {
+    if(mapArray[j][1]>mapArray[j+1][1]){
+        let temp = mapArray[j][1];
+        mapArray[j][1] = mapArray[j+1][1];
+        mapArray[j+1][1] = temp;
+    }
+  }
+}
+
+wordLenMap = new Map(mapArray);
+console.log("sorted map is", wordLenMap);
+
+using inpbuilt method
+
+words.sort((a, b)=> a.length - b.length )
+
+
+1️⃣4️⃣ Find common elements between two arrays
+const arr1 = [1, 2, 3, 4];
+const arr2 = [3, 4, 5, 6];
+
+const commonElements = [];
+
+arr1.forEach((val)=>{
+    if(arr2.includes(val))
+    {
+        commonElements.push(val);
+    }
+})
+
+console.log("common values", commonElements)
+
+method2:
+
+const commonElements =  arr2.filter((item)=> arr1.indexOf(item) !== -1);
+console.log(commonElements);
