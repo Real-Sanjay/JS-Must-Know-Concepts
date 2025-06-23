@@ -254,3 +254,33 @@ method2:
 
 const commonElements =  arr2.filter((item)=> arr1.indexOf(item) !== -1);
 console.log(commonElements);
+
+1️⃣5️⃣ Group objects by a key
+const people = [
+  { name: "Alice", role: "admin" },
+  { name: "Bob", role: "user" },
+  { name: "Charlie", role: "admin" },
+  { name: "Dave", role: "user" }
+];
+➡️ Output should group by role.
+
+soln1:
+let ans = {};
+
+ans.admins = people.filter((person) => person.role === "admin");
+ans.users = people.filter((person) => person.role === "user");
+
+console.log(ans);
+
+soln2: dynamic and scaleable
+
+const grouped = people.reduce((acc, person) => {
+  const key = person.role;
+  if (!acc[key]) {
+    acc[key] = [];
+  }
+  acc[key].push(person);
+  return acc;
+}, {});
+
+console.log(grouped);
