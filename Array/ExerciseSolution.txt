@@ -284,3 +284,52 @@ const grouped = people.reduce((acc, person) => {
 }, {});
 
 console.log(grouped);
+
+1️⃣6️⃣ Chunk an array into smaller arrays of size n
+const data = [1, 2, 3, 4, 5, 6, 7];
+const size = 3;
+
+expected output: [[1, 2, 3], [4, 5, 6], [7]]
+
+soln1: 
+let result = [];
+let chunks = [];
+for(let i = 0; i < data.length; i ++){
+  chunks.push(data[i]);
+  if(chunks.length >= size){
+    result.push(chunks);
+    chunks = [];
+  }
+}
+if(chunks.length > 0){
+  result.push(chunks);
+}
+
+soln2: 
+const result = [];
+
+let i = 0;
+while (i < data.length) {
+  result.push(data.slice(i, i + size));
+  i += size;
+}
+
+console.log(result);
+
+soln3: 
+const result = data.reduce((acc, curr, index) => {
+  // Determine the index of the chunk we’re in
+  const chunkIndex = Math.floor(index / size);
+
+  // If the chunk doesn't exist yet, create it
+  if (!acc[chunkIndex]) {
+    acc[chunkIndex] = [];
+  }
+
+  // Push the current element into the correct chunk
+  acc[chunkIndex].push(curr);
+
+  return acc;
+}, []);
+
+console.log(result);

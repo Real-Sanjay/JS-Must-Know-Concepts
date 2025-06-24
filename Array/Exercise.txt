@@ -68,8 +68,9 @@ const people = [
 ➡️ Output should group by role.
 
 1️⃣6️⃣ Chunk an array into smaller arrays of size n
-const data = [1, 2, 3, 4, 5, 6, 7];
+const data = [1, 2, 316, 4, 5, 6, 7];
 const size = 3;
+expected output: [[1, 2, 3], [4, 5, 6], [7]]
 
 
 1️⃣7️⃣ Calculate the average from an array of numbers
