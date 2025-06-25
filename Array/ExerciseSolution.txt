@@ -333,3 +333,75 @@ const result = data.reduce((acc, curr, index) => {
 }, []);
 
 console.log(result);
+
+1️⃣7️⃣ Check if array is a palindrome
+const arr = [1, 2, 3, 2, 1];
+
+soln1:
+let fPointer = 0;
+let lPointer = arr.length-1;
+let isPalin = true;
+
+while(fPointer<=lPointer){
+if(arr[fPointer] !== arr[lPointer]) {
+    console.log("not a palindrome!");
+    isPalin = false;
+    break;
+}
+fPointer ++;
+lPointer --;
+}
+
+if(isPalin) console.log("arr is a palindrome!!")
+
+soln2:
+const arr = [1, 2, 3, 2, 1];
+
+const reversed = [...arr].reverse(); // Create a reversed copy
+if (arr.join() === reversed.join()) {
+  console.log("arr is a palindrome!!");
+} else {
+  console.log("not a palindrome!");
+}
+
+soln3:
+const arr = [1, 2, 3, 2, 1];
+let isPalin = true;
+
+for (let i = 0; i < arr.length / 2; i++) {
+  if (arr[i] !== arr[arr.length - 1 - i]) {
+    isPalin = false;
+    break;
+  }
+}
+
+1️⃣8️⃣ Remove falsy values (false, null, 0, "", undefined, NaN)
+const values = [0, "hello", false, 42, "", null, "world"];
+
+soln1: 
+const result = values.filter(Boolean);
+console.log(result);  // [ 'hello', 42, 'world' ]
+
+Boolean is used as a function here.
+
+It converts each value to its boolean equivalent and filters truthy ones.
+
+soln2:
+const result = values.filter(val => 
+  val !== false &&
+  val !== null &&
+  val !== 0 &&
+  val !== "" &&
+  val !== undefined &&
+  !Number.isNaN(val)
+);
+console.log(result);  // [ 'hello', 42, 'world' ]
+
+soln3:
+const truthyVal = []
+values.forEach((val)=>{
+    if(val){
+        truthyVal.push(val)
+    }
+})
+console.log(truthyVal);

@@ -73,16 +73,14 @@ const size = 3;
 expected output: [[1, 2, 3], [4, 5, 6], [7]]
 
 
-1️⃣7️⃣ Calculate the average from an array of numbers
-const marks = [80, 90, 100, 70, 60];
-
-1️⃣8️⃣ Check if array is a palindrome
+1️⃣7️⃣ Check if array is a palindrome
 const arr = [1, 2, 3, 2, 1];
 
-1️⃣9️⃣ Remove falsy values (false, null, 0, "", undefined, NaN)
+
+1️⃣8️⃣ Remove falsy values (false, null, 0, "", undefined, NaN)
 const values = [0, "hello", false, 42, "", null, "world"];
 
-2️⃣0️⃣ Custom map() method (polyfill)
+1️⃣9️⃣Custom map() method (polyfill)
 Array.prototype.myMap = function(callback) {
   // Your logic here
 };
