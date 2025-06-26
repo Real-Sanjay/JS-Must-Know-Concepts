@@ -84,3 +84,4 @@ const values = [0, "hello", false, 42, "", null, "world"];
 Array.prototype.myMap = function(callback) {
   // Your logic here
 };
+

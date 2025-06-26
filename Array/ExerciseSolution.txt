@@ -405,3 +405,22 @@ values.forEach((val)=>{
     }
 })
 console.log(truthyVal);
+
+1️⃣9️⃣Custom map() method (polyfill)
+Array.prototype.myMap = function(callback) {
+  // Your logic here
+};
+
+Array.prototype.myMap = function(callback) {
+   const result = [];
+   for(let i = 0; i< this.length; i ++){
+    if(this.hasOwnProperty(i)){
+      result.push(callback(this[i], i, this))
+    }
+   }
+   return result;
+};
+
+const arr = [1,2,3,6]
+const res = arr.myMap(function(num, index, arr) { return num});
+console.log(res)
