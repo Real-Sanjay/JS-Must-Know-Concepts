@@ -1,15 +1,15 @@
-📌 Functions in JavaScript
+ Functions in JavaScript
 🔹 What is a Function?
 A function is a reusable block of code that performs a specific task.
 
-✅ Function Syntax:
+Function Syntax:
 
 code
 function functionName(parameters) {
     // Function body
     return value; // Optional
 }
-✅ Example: Function with Parameters and Return Value
+Example: Function with Parameters and Return Value
 
 code
 function add(a, b) {
@@ -20,7 +20,7 @@ console.log(add(5, 10)); // ✅ Output: 15
 
 🔹 Types of Functions in JavaScript
 
-1️⃣ Function Declaration (Named Function)
+Function Declaration (Named Function)
 
 code
 
@@ -47,8 +47,7 @@ code
 const square = (x) => x * x;
 console.log(square(6)); // ✅ Output: 36
 
-📌 Arrow functions with multiple parameters & return statement
-
+Arrow functions with multiple parameters & return statement
 code
 
 const subtract = (a, b) => {
@@ -58,7 +57,7 @@ const subtract = (a, b) => {
 console.log(subtract(10, 3)); // ✅ Output: 7
 
 🔹 Function Parameters & Arguments
-✅ Default Parameters
+ Default Parameters
 
 code
 function greet(name = "Guest") {
@@ -67,7 +66,7 @@ function greet(name = "Guest") {
 greet("Alice"); // ✅ Output: Hello, Alice!
 greet(); // ✅ Output: Hello, Guest!
 
-✅ Rest Parameters (...args)
+ Rest Parameters (...args)
 
 code
 function sum(...numbers) {
@@ -75,7 +74,7 @@ function sum(...numbers) {
 }
 console.log(sum(1, 2, 3, 4, 5)); // ✅ Output: 15
 
-✅ Passing Functions as Arguments (Higher-Order Functions)
+Passing Functions as Arguments (Higher-Order Functions)
 
 code
 function applyFunction(a, b, operation) {
@@ -84,9 +83,9 @@ function applyFunction(a, b, operation) {
 
 const add = (x, y) => x + y;
 console.log(applyFunction(3, 4, add)); // ✅ Output: 7
-🔹 Callback Functions
 
-✅ A function passed as an argument to another function
+🔹 Callback Functions
+ A function passed as an argument to another function
 
 code
 function fetchData(callback) {
@@ -100,7 +99,7 @@ fetchData((data) => {
 });
 🔹 Immediately Invoked Function Expressions (IIFE)
 
-✅ Function that runs immediately after being defined
+Function that runs immediately after being defined
 
 code
 (function () {
@@ -109,7 +108,7 @@ code
 
 
 
-🎯 Summary
+Summary
 ✅ Functions help in code reusability and better organization
 ✅ Different function types: Declaration, Expression, Arrow Functions
 ✅ Functions can have default parameters, rest parameters, and callbacks

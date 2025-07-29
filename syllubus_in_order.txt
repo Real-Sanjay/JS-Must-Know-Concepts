@@ -1,0 +1,28 @@
+1. Fundamentals (Building Blocks):
+JavaScript const: Learn how to declare variables and understand the difference between mutable and immutable values.
+JavaScript Functions: Master the basics of defining and calling functions, passing arguments, and returning values.
+Scope: Crucial for understanding where variables are accessible and avoiding common errors.
+Arrays: Learn how to work with ordered collections of data.
+JavaScript Objects: Understand how to create and manipulate data using key-value pairs.
+Hoisting: Understand how JavaScript handles variable and function declarations behind the scenes. 
+
+2. Core Concepts (Expanding Your Knowledge):
+Error Handling: Learn how to gracefully handle and manage errors in your code.
+Arrow functions: Become familiar with this concise function syntax and its implications for this binding.
+Destructuring: Learn how to extract data from arrays and objects efficiently.
+Spread syntax: Understand how to expand iterables and use it for various tasks like cloning arrays or merging objects.
+Callbacks: Essential for working with asynchronous operations.
+Asynchronous communication: Get a basic understanding of how JavaScript handles tasks that take time.
+The event loop: Gain insight into how JavaScript manages concurrency and asynchronous operations. 
+
+3. Advanced Concepts (Deepening Your Understanding):
+Promises: A foundational concept for managing asynchronous operations more effectively.
+Async/await: Build upon your understanding of Promises to write cleaner asynchronous code.
+Closures: Explore how closures work and their use cases.
+IIFE (Immediately Invoked Function Expression): Learn how to create private scopes and avoid global namespace pollution.
+Prototype: Understand JavaScript's inheritance mechanism.
+JavaScript OOPS: Apply object-oriented principles to your JavaScript code.
+JavaScript Modules: Learn how to organize and structure your code into reusable modules.
+Currying: Explore this functional programming technique.
+JavaScript RegExp: Become proficient in using regular expressions for pattern matching.
+Memoization: Discover how to optimize performance by caching function results. 

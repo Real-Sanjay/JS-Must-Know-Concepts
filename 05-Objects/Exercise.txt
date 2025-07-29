@@ -1,0 +1,94 @@
+1️⃣ Create an object and access properties
+const car = { brand: "Toyota", model: "Corolla", year: 2020 };
+➡️ Get the brand and year from the object.
+
+2️⃣ Add a new property to an object
+const user = { name: "Alice", age: 25 };
+➡️ Add a city property with value "New York".
+
+3️⃣ Delete a property from an object
+const product = { name: "Laptop", price: 1000, discount: 100 };
+➡️ Remove the discount property.
+
+4️⃣ Check if a property exists in an object
+const book = { title: "1984", author: "Orwell" };
+➡️ Check if pages exists in the book object.
+
+5️⃣ Count the number of properties in an object
+const student = { name: "John", age: 21, grade: "A" };
+➡️ Find how many keys the object has.
+
+6️⃣ Convert an object to an array of keys and values
+const person = { name: "Mike", job: "Engineer", country: "USA" };
+➡️ Output: [["name", "Mike"], ["job", "Engineer"], ["country", "USA"]]
+
+7️⃣ Merge two objects
+const obj1 = { a: 1, b: 2 };
+const obj2 = { b: 3, c: 4 };
+➡️ Merge into { a: 1, b: 3, c: 4 }.
+
+
+8️⃣ Get all keys and values from an object
+const movie = { title: "Inception", director: "Nolan", year: 2010 };
+➡️ Print keys and values separately.
+
+9️⃣ Find the property with the highest value
+const scores = { Alice: 50, Bob: 75, Charlie: 60 };
+➡️ Output: "Bob" (highest score).
+
+🔟 Swap keys and values in an object
+const roles = { admin: 1, user: 2, guest: 3 };
+➡️ Output: { 1: "admin", 2: "user", 3: "guest" }.
+
+1️⃣1️⃣ Clone an object without reference issues
+const original = { x: 10, y: 20 };
+➡️ Create an independent copy.
+
+1️⃣2️⃣ Find all properties with a certain value
+const data = { a: 1, b: 2, c: 1, d: 3 };
+➡️ Get all keys that have value 1.
+
+1️⃣3️⃣ Filter properties from an object
+const person = { name: "Tom", age: 25, password: "secret123" };
+➡️ Return a new object without the password key.
+
+1️⃣4️⃣ Count how many times each value appears in object values
+const colors = { item1: "red", item2: "blue", item3: "red", item4: "green" };
+➡️ Output: { red: 2, blue: 1, green: 1 }.
+
+1️⃣5️⃣ Group objects by a property
+const users = [
+  { name: "Alice", role: "admin" },
+  { name: "Bob", role: "user" },
+  { name: "Charlie", role: "admin" },
+  { name: "Dave", role: "user" }
+];
+➡️ Output:
+{
+  admin: [{ name: "Alice" }, { name: "Charlie" }],
+  user: [{ name: "Bob" }, { name: "Dave" }]
+}
+
+
+1️⃣6️⃣ Deep clone a nested object
+const obj = { a: 1, b: { c: 2 } };
+➡️ Clone it so changing obj.b.c doesn’t affect the copy.
+
+1️⃣7️⃣ Remove all properties with falsy values
+const data = { a: 0, b: "hello", c: false, d: "", e: 42, f: null };
+➡️ Output: { b: "hello", e: 42 }.
+
+1️⃣8️⃣ Freeze an object to prevent changes
+const config = { apiKey: "12345", version: 1 };
+➡️ Make sure it can’t be modified (use Object.freeze).
+
+1️⃣9️⃣ Write a custom Object.myKeys() method
+Object.myKeys = function(obj) {
+  // your logic here
+};
+➡️ Should work like Object.keys().
+
+2️⃣0️⃣ Write a function to compare two objects deeply
+const obj1 = { a: 1, b: { c: 2 } };
+const obj2 = { a: 1, b: { c: 2 } };
+➡️ Return true if they are equal.

@@ -20,7 +20,7 @@ console.log(numbers);
 3️⃣ Count occurrences of elements in an array
 const items = ["apple", "banana", "apple", "orange", "banana", "apple"];
 const ans = items.reduce((acc, item)=>{
-    acc[item] = (acc[item] ||0) +1;
+    acc[item] = (acc[item] || 0) +1;
     return acc;
 }, {});
 
@@ -92,19 +92,19 @@ The flat method can be used to flatten an array to a specified depth.
 const flattened = nested.flat();
 console.log(flattened); // Output: [1, 2, 3, 4, 5, 6]
 
-
+// Only works for 1 level deep
 2. Using Array.prototype.concat()
 You can use concat along with the spread operator to flatten the array.
 const flattened = [].concat(...nested);
 console.log(flattened); // Output: [1, 2, 3, 4, 5, 6]
 
-
+// Only works for 1 level deep
 3. Using Array.prototype.reduce()
 The reduce method can be used to accumulate the elements into a single array.
 const flattened = nested.reduce((acc, val) => acc.concat(val), []);
 console.log(flattened); // Output: [1, 2, 3, 4, 5, 6]
 
-
+// Only works for 1 level deep
 4. Using Array.prototype.forEach()
 You can manually iterate through the array and push elements into a new array.
 const flattened = [];
@@ -117,7 +117,7 @@ nested.forEach(val => {
 });
 console.log(flattened); // Output: [1, 2, 3, 4, 5, 6]
 
-
+// Only works for 1 level deep
 5. Using Array.prototype.map() and Array.prototype.concat()
 Combining map and concat can also achieve the flattening.
 const flattened = [].concat(...nested.map(val => val));

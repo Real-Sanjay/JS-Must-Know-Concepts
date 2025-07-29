@@ -1,4 +1,4 @@
-🔥 Scope in JavaScript
+Scope in JavaScript
 Scope determines where variables can be accessed in a program. JavaScript has three main types of scope:
 
 1️⃣ Global Scope
@@ -20,7 +20,7 @@ function fetchData(endpoint) {
 
 fetchData("users"); // ✅ Accessible anywhere
 console.log(API_URL); // ✅ Works globally
-👉 The problem with global variables: They stay in memory and can be overwritten by mistake.
+ The problem with global variables: They stay in memory and can be overwritten by mistake.
 🔹 Best Practice: Use const to avoid accidental changes.
 
 2️⃣ Function Scope (Local Scope)
@@ -36,7 +36,7 @@ function fetchUserData(userId) {
 
 fetchUserData(101);
 console.log(endpoint); // ❌ ReferenceError: endpoint is not defined
-👉 Why? endpoint is local to fetchUserData() and cannot be accessed outside.
+ Why? endpoint is local to fetchUserData() and cannot be accessed outside.
 
 🔹 Best Practice: Keep variables inside functions unless you need them globally.
 
@@ -50,7 +50,7 @@ for (let i = 0; i < 3; i++) {
     console.log(`Iteration: ${i}`); // ✅ Accessible inside loop
 }
 console.log(i); // ❌ ReferenceError: i is not defined (because of block scope)
-👉 If we used var instead of let, i would be accessible outside the loop!
+ If we used var instead of let, i would be accessible outside the loop!
 
 4️⃣ Scope & Closures
 Variables in an outer function’s scope can be accessed by an inner function.
@@ -72,24 +72,25 @@ increment(); // Count: 1
 increment(); // Count: 2
 
 console.log(count); // ❌ ReferenceError: count is not defined
+
 5️⃣ var vs let vs const in Scope
-Feature	var	let	const
-Scope	Function	Block	Block
-Redeclaration	✅ Allowed	❌ Error	❌ Error
-Reassignment	✅ Allowed	✅ Allowed	❌ Not Allowed
-Hoisted?	✅ Yes (but undefined)	✅ Yes (but not initialized)	✅ Yes (but not initialized)
+Feature	       var	   let	   const
+Scope	    Function   Block	Block
+Redeclaration Allowed  Error	Error
+Reassignment  Allowed  Allowed	Not Allowed
+Hoisted?	Yes (but undefined) Yes (but not initialized) Yes (but not initialized)
 Example: var Scope Issue
 code
 if (true) {
     var a = 10; 
 }
-console.log(a); // ✅ 10 (Because `var` is NOT block-scoped)
+console.log(a); //  10 (Because `var` is NOT block-scoped)
 
 if (true) {
     let b = 20;
 }
 console.log(b); // ❌ ReferenceError (Because `let` is block-scoped)
-👉 Best Practice: Always use let or const instead of var.
+ Best Practice: Always use let or const instead of var.
 
 6️⃣ Hoisting & Scope
 Hoisting means variable declarations are moved to the top of their scope.
@@ -103,3 +104,37 @@ console.log(y); // ❌ ReferenceError (let is hoisted but not initialized)
 let y = 10;
 🔹 Best Practice: Always declare variables at the top of their scope to avoid hoisting issues.
 
+Key points about hoisting:
+Declarations are hoisted, not initializations:
+While the declaration of a var variable is hoisted, its assignment (initialization) remains in place. This can lead to undefined values if you try to access the variable before its assignment.
+
+let and const variables are also hoisted but have a Temporal Dead Zone (TDZ):
+Unlike var, let and const variables cannot be accessed before their declaration in the code. Attempting to do so will result in a ReferenceError, as they are in a TDZ until their declaration is encountered.
+
+Function declarations are fully hoisted:
+This means you can call a function declared with the function keyword before its definition in the code.
+Function expressions are not fully hoisted:
+If a function is assigned to a variable, only the variable declaration is hoisted, not the function itself.
+Example:
+
+// Variable Hoisting with 'var'
+console.log(myVar); // Output: undefined
+var myVar = "Hello";
+console.log(myVar); // Output: Hello
+
+// Variable Hoisting with 'let' (Temporal Dead Zone)
+// console.log(myLetVar); // This would cause a ReferenceError
+let myLetVar = "World";
+
+// Function Hoisting
+greet(); // Output: Hi there!
+function greet() {
+  console.log("Hi there!");
+}
+
+// Function Expression (not fully hoisted)
+// sayHello(); // This would cause a TypeError (sayHello is not a function)
+var sayHello = function() {
+  console.log("Hello from function expression!");
+};
+sayHello(); // Output: Hello from function expression!

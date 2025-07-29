@@ -1,0 +1,167 @@
+JavaScript Objects
+🔹 What Are Objects in JavaScript?
+Objects in JavaScript are collections of key-value pairs where values can be properties (data) or methods (functions). They allow you to store, organize, and manipulate data efficiently.
+
+ Example of a Basic Object:
+
+code
+const user = {
+    name: "Riya",
+    age: 25,
+    city: "Paris",
+    greet: function () {
+        return `Hello, my name is ${this.name}`;
+    }
+};
+
+console.log(user.name); //  Output: Riya
+console.log(user.greet()); //  Output: Hello, my name is Riya
+
+
+🔹 Ways to Create Objects in JavaScript
+ 1️⃣ Object Literals (Most Common)
+code
+const car = {
+    brand: "Tesla",
+    model: "Model S",
+    year: 2023
+};
+
+ 2️⃣ Using the new Object() Constructor
+code
+const book = new Object();
+book.title = "The Great Gatsby";
+book.author = "F. Scott Fitzgerald";
+console.log(book.title); //  Output: The Great Gatsby
+
+ 3️⃣ Using Object.create()
+code
+const personPrototype = {
+    greet: function () {
+        return `Hello, ${this.name}`;
+    }
+};
+
+const person = Object.create(personPrototype);
+person.name = "Bob";
+console.log(person.greet()); //  Output: Hello, Bob
+
+ 4️⃣ Using Constructor Functions
+code
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+const user1 = new Person("Alice", 25);
+console.log(user1.name); //  Output: Alice
+
+ 5️⃣ Using ES6 Classes (Preferred for OOP)
+code
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    greet() {
+        return `Hi, I'm ${this.name}`;
+    }
+}
+
+const user2 = new Person("Charlie", 30);
+console.log(user2.greet());  ✅ Output: Hi, I'm Charlie
+
+
+🔹 Object Methods
+
+ Add Methods to Objects
+
+code
+const student = {
+    name: "Ram",
+    sayHello() {
+        return `Hello, I'm ${this.name}`;
+    }
+};
+
+console.log(student.sayHello()); //  Output: Hello, I'm Ram
+
+Using this Keyword
+
+code
+const employee = {
+    name: "Nitin",
+    role: "Developer",
+    introduce() {
+        return `I'm ${this.name}, working as a ${this.role}`;
+    }
+};
+
+console.log(employee.introduce()); //  Output: I'm Nitin, working as a Developer
+
+
+Using Object.assign() for Merging Objects
+
+code
+const obj1 = { a: 1, b: 2 };
+const obj2 = { b: 3, c: 4 };
+
+const merged = Object.assign({}, obj1, obj2);
+console.log(merged); // Output: { a: 1, b: 3, c: 4 }
+
+Using Object.keys(), Object.values(), and Object.entries()
+
+code
+const user = { name: "Eve", age: 28, city: "NYC" };
+
+console.log(Object.keys(user)); //  Output: ["name", "age", "city"]
+console.log(Object.values(user)); //  Output: ["Eve", 28, "NYC"]
+console.log(Object.entries(user)); // Output: [["name", "Eve"], ["age", 28], ["city", "NYC"]]
+
+Using Object.freeze() (Prevents Modifications)
+
+code
+const config = { apiUrl: "https://api.example.com" };
+Object.freeze(config);
+
+config.apiUrl = "https://new-api.com"; //  This will not change the value
+console.log(config.apiUrl); //  Output: "https://api.example.com"
+
+
+Using Object.seal() (Prevents Adding/Removing Properties)
+
+code
+const settings = { theme: "dark" };
+Object.seal(settings);
+
+settings.theme = "light"; // Allowed
+settings.newProperty = "test"; //  Not allowed
+console.log(settings); //  Output: { theme: "light" }
+
+🔹 Deep Copy vs. Shallow Copy
+
+Shallow Copy (Object.assign() or Spread Operator)
+code
+const user = { name: "Alice", details: { age: 25 } };
+const userCopy = { ...user };
+
+userCopy.details.age = 30;
+console.log(user.details.age); // ❌ Output: 30 (Changes original object)
+
+Deep Copy (structuredClone() or JSON.parse(JSON.stringify()))
+code
+const user = { name: "Alice", details: { age: 25 } };
+const deepCopy = JSON.parse(JSON.stringify(user));
+
+deepCopy.details.age = 30;
+
+console.log(user.details.age); //  Output: 25 (Original remains unchanged)
+
+ Summary
+ Objects store key-value pairs, where values can be data or methods.
+ There are multiple ways to create objects: literals, constructors, Object.create(), and ES6 classes.
+ this refers to the current object instance.
+ Use Object.assign() or { ...obj } for shallow copies and JSON.parse(JSON.stringify(obj)) for deep copies.
+ Object.freeze() prevents modifications, while Object.seal() allows changes but prevents adding new properties.
+

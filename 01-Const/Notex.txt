@@ -1,4 +1,4 @@
-📌 JavaScript const 
+ JavaScript const 
 
 🔹 What is const?
 The const keyword is used to declare variables that cannot be reassigned.
@@ -12,7 +12,7 @@ const name = "Alice";
 console.log(name); // ✅ Output: Alice
 
 name = "Bob"; // ❌ Error: Assignment to constant variable
-🚨 Once assigned, a const variable cannot be changed!
+ Once assigned, a const variable cannot be changed!
 
 🔹 const is Block-Scoped
 Like let, const is only accessible inside the block where it is declared.
@@ -26,7 +26,7 @@ console.log(age); // ❌ Error: age is not defined
 🔹 const is NOT globally available if defined inside a block!
 
 🔹 const with Objects (Mutable Properties)
-🚨 const prevents reassignment, but it does not make objects immutable.
+ const prevents reassignment, but it does not make objects immutable.
 
 code
 const person = { name: "Alice", age: 25 };
@@ -44,6 +44,7 @@ Object.freeze(car);
 
 car.model = "Corolla"; // ❌ No effect (silently fails in non-strict mode)
 console.log(car.model); // Output: Camry
+
 🔹 const with Arrays (Mutable Elements)
 code
 const numbers = [1, 2, 3];
@@ -54,10 +55,10 @@ numbers = [10, 20, 30]; // ❌ Error: Assignment to constant variable
 ✅ Array elements can be changed, but the reference cannot be reassigned.
 
 🔹 When to Use const vs let vs var?
-Feature	var	let	const
+Feature     	var	    let	    const
 Reassignment	✅ Yes	✅ Yes	❌ No
-Scope	Function-scoped	Block-scoped	Block-scoped
-Hoisting	✅ Yes (undefined)	✅ Yes (TDZ)	✅ Yes (TDZ)
+Scope	        Function-scoped	Block-scoped	Block-scoped
+Hoisting	    ✅ Yes (undefined)	✅ Yes (TDZ)	✅ Yes (TDZ)
 Can modify object/array properties?	✅ Yes	✅ Yes	✅ Yes
 📌 Best Practice:
 
@@ -66,7 +67,7 @@ Use let only when reassignment is needed.
 Avoid var due to scope issues.
 
 
-🎯 Summary
+Summary
 ✅ const prevents reassignment but allows property modifications in objects and arrays.
 ✅ const is block-scoped, meaning it's only available inside the block where it's declared.
 ✅ Best practice: Use const by default unless you need to reassign, then use let.

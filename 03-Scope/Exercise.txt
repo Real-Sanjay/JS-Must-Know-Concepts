@@ -1,4 +1,4 @@
-🎯 Exercises
+Exercises
 
 Exercise 1: Global vs Local Scope
 What will be the output?
