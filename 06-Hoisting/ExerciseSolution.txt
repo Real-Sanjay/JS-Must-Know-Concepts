@@ -1,0 +1,238 @@
+1️⃣ What will this log? Why?
+console.log(a);
+var a = 10;
+
+Step by Step:
+var declarations are hoisted to the top but not initialized (they get undefined initially).
+So JS treats it like:
+
+var a;         // hoisted (undefined)
+console.log(a);
+a = 10;
+Output:
+undefined
+
+2️⃣ What’s the output? Explain hoisting here.
+console.log(b);
+let b = 5;
+Step by Step:
+
+let is also hoisted but goes into the Temporal Dead Zone (TDZ) until its declaration line.
+Accessing it before initialization throws a ReferenceError.
+
+Output:
+ReferenceError: Cannot access 'b' before initialization
+
+3️⃣ What happens here?
+sayHello();
+function sayHello() {
+  console.log("Hello!");
+}
+
+Step by Step:
+Function declarations are hoisted with their definitions.
+So JS knows sayHello() and can call it even before the line.
+Output:
+Hello!
+
+4️⃣ Predict the output:
+greet();
+var greet = function() {
+  console.log("Hi there!");
+};
+
+Step by Step:
+var greet is hoisted but not its function value (it’s initialized as undefined).
+At the time of the call greet(), greet = undefined.
+Output:
+TypeError: greet is not a function
+
+5️⃣ Will this code throw an error or print something?
+console.log(num);
+const num = 50;
+ Step by Step:
+const is hoisted but in TDZ until initialized.
+Accessing it before declaration → ReferenceError.
+Output:
+ReferenceError: Cannot access 'num' before initialization
+
+6️⃣ Difference in hoisting between these cases:
+
+foo();
+function foo() {
+  console.log("Function Declaration");
+}
+
+bar();
+var bar = function() {
+  console.log("Function Expression");
+};
+
+Step by Step:
+
+ foo() → Works, because function declarations are fully hoisted (definition + name).
+
+ bar() → Throws error, because var bar is hoisted but initialized as undefined.
+
+Output:
+Function Declaration
+TypeError: bar is not a function
+
+7️⃣ What happens when you use var inside an if block?
+if (true) {
+  var x = 100;
+}
+console.log(x);
+
+Step by Step:
+
+var is function-scoped (or global if not inside a function), NOT block-scoped.
+So x is hoisted to the top of the script.
+Output:
+100
+
+8️⃣ Does this throw an error or print something?
+if (true) {
+  console.log(y);
+  let y = 200;
+}
+
+Step by Step:
+let is hoisted but in TDZ.
+Accessing before initialization → ReferenceError.
+Output:
+ReferenceError: Cannot access 'y' before initialization
+
+9️⃣ Hoisting with var in a for loop
+for (var i = 0; i < 3; i++) {
+  console.log(i);
+}
+console.log("After loop:", i);
+
+Step by Step:
+var i is hoisted to function/global scope.
+After the loop, i still exists.
+ Output:
+0
+1
+2
+After loop: 3
+
+🔟 Hoisting with let in a for loop
+for (let j = 0; j < 3; j++) {
+  console.log(j);
+}
+console.log("After loop:", j);
+
+ Step by Step:
+
+let j is block-scoped (each loop iteration has its own j).
+Accessing it outside the loop → ReferenceError.
+ Output:
+0
+1
+2
+ReferenceError: j is not defined
+
+1️⃣1️⃣ Explain the Temporal Dead Zone here:
+console.log(message);
+let message = "Hello TDZ!";
+
+Explanation:
+message is hoisted but in TDZ until the let line executes.
+Access before declaration → ReferenceError.
+
+Output:
+ReferenceError
+
+1️⃣2️⃣ Predict the output:
+function test() {
+  console.log(a);
+  var a = 1;
+  console.log(b);
+  let b = 2;
+}
+test();
+
+Step by Step:
+var a → Hoisted as undefined → First log prints undefined.
+let b → In TDZ → Accessing before initialization → ReferenceError.
+ Output:
+undefined
+ReferenceError: Cannot access 'b' before initialization
+
+1️⃣3️⃣ What will be logged and why?
+function check() {
+  console.log(myVar);
+  var myVar = "I am var";
+  console.log(myLet);
+  let myLet = "I am let";
+}
+check();
+
+Step by Step:
+myVar → Hoisted as undefined.
+myLet → TDZ → Access before declaration → ReferenceError.
+
+Output:
+undefined
+ReferenceError
+
+1️⃣4️⃣ Function & variable hoisting combo:
+hoistMe();
+var hoistMe = 20;
+function hoistMe() {
+  console.log("Hoisted function!");
+}
+console.log(hoistMe);
+
+ Step by Step:
+
+Function declaration hoistMe() is hoisted before var hoistMe.
+
+When JS reads this:
+
+First, it hoists function hoistMe (full function).
+
+Then it hoists var hoistMe (does nothing since name already exists).
+
+At runtime:
+
+First call → Calls the function → Prints "Hoisted function!"
+
+Then hoistMe = 20 reassigns hoistMe to a number.
+
+Final log prints 20.
+ Output:
+
+Hoisted function!
+20
+
+1️⃣5️⃣ Hoisting inside nested functions:
+
+
+function outer() {
+  console.log(innerVar);
+  var innerVar = "outer var";
+
+  function inner() {
+    console.log(innerVar);
+    var innerVar = "inner var";
+  }
+
+  inner();
+}
+outer();
+
+Step by Step:
+
+Inside outer(): var innerVar hoisted as undefined.
+
+First console.log(innerVar) → undefined.
+
+Inside inner(): var innerVar (different variable) hoisted as undefined.
+
+console.log(innerVar) → undefined.
+Output:
+undefined
+undefined

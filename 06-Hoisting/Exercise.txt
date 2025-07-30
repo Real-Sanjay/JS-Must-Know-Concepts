@@ -1,0 +1,110 @@
+Beginner – Foundation Builders
+(Basics of how var, let, const, and functions behave with hoisting)
+
+1️⃣ What will this log? Why?
+console.log(a);
+var a = 10;
+
+
+2️⃣ What’s the output? Explain hoisting here.
+console.log(b);
+let b = 5;
+
+3️⃣ What happens here?
+sayHello();
+function sayHello() {
+  console.log("Hello!");
+}
+
+4️⃣ Predict the output:
+greet();
+var greet = function() {
+  console.log("Hi there!");
+};
+
+5️⃣ Will this code throw an error or print something?
+console.log(num);
+const num = 50;
+
+ Intermediate – Deeper Hoisting Logic
+6️⃣ Explain the difference in hoisting between these two cases:
+
+foo();
+function foo() {
+  console.log("Function Declaration");
+}
+
+bar();
+var bar = function() {
+  console.log("Function Expression");
+};
+
+7️⃣ What happens when you use var inside an if block?
+if (true) {
+  var x = 100;
+}
+console.log(x);
+
+8️⃣ Does this throw an error or print something?
+if (true) {
+  console.log(y);
+  let y = 200;
+}
+
+9️⃣ How does hoisting work in a for loop with var?
+for (var i = 0; i < 3; i++) {
+  console.log(i);
+}
+console.log("After loop:", i);
+
+🔟 How does hoisting work in a for loop with let?
+for (let j = 0; j < 3; j++) {
+  console.log(j);
+}
+console.log("After loop:", j);
+
+Advanced – Real-World Style Challenges
+1️⃣1️⃣ Explain the Temporal Dead Zone in this code:
+console.log(message);
+let message = "Hello TDZ!";
+
+
+1️⃣2️⃣ Predict the output & explain step-by-step:
+function test() {
+  console.log(a);
+  var a = 1;
+  console.log(b);
+  let b = 2;
+}
+test();
+
+1️⃣3️⃣ What will be logged and why?
+function check() {
+  console.log(myVar);
+  var myVar = "I am var";
+  console.log(myLet);
+  let myLet = "I am let";
+}
+check();
+
+1️⃣4️⃣ Function & variable hoisting combo:
+hoistMe();
+var hoistMe = 20;
+function hoistMe() {
+  console.log("Hoisted function!");
+}
+console.log(hoistMe);
+
+1️⃣5️⃣ Hoisting inside nested functions:
+function outer() {
+  console.log(innerVar);
+  var innerVar = "outer var";
+
+  function inner() {
+    console.log(innerVar);
+    var innerVar = "inner var";
+  }
+
+  inner();
+}
+outer();

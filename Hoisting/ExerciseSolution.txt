@@ -1,7 +1,0 @@
-What will be the output of this code?
-
-console.log(a); // undefined
-var a = 10;
-
-console.log(b); //ReferenceError: b is not defined
-let b = 20;
