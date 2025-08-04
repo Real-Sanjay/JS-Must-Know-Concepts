@@ -9,23 +9,24 @@ code
 function add(a, b) {
     return a + b;
 }
-console.log(add(2, 3)); // ✅ Output: 5
+console.log(add(2, 3)); // Output: 5
+
 Arrow function:
 
 code
 const add = (a, b) => a + b;
-console.log(add(2, 3)); // ✅ Output: 5
-📌 Rules:
-✔ If the function has one parameter, you can omit parentheses:
+console.log(add(2, 3)); //  Output: 5
 
+ Note:
+✔ If the function has one parameter, you can omit parentheses:
 code
 const square = x => x * x;
-✔ If the function has multiple parameters, use parentheses:
 
+✔ If the function has multiple parameters, use parentheses:
 code
 const multiply = (a, b) => a * b;
-✔ If the function has multiple lines, use {} and return:
 
+✔ If the function has multiple lines, use {} and return:
 code
 const greet = name => {
     return `Hello, ${name}!`;
@@ -34,111 +35,112 @@ const greet = name => {
 
 🔹 Arrow Functions vs Regular Functions
 
-Feature	Regular Function	Arrow Function
-Syntax	Longer	Shorter
-this Binding	Dynamically bound	Lexically bound (inherits this)
-arguments Object	✅ Available	❌ Not available
-Used as Methods	✅ Yes	❌ No (Avoid using as object methods)
+Feature	            Regular Function	 Arrow Function
+Syntax	              Longer	          Shorter
+this Binding	      Dynamically bound	  Lexically bound (inherits this)
+arguments Object	  Available	          Not available
+Used as Methods	      Yes	              No (Avoid using as object methods)
 
 
 🔹 this in Arrow Functions
 Arrow functions do not have their own this. Instead, they inherit this from the surrounding scope.
 
-❌ Regular Function Example (Creates a new this)
+ Regular Function Example (Creates a new this)
 code
 function Person(name) {
     this.name = name;
     this.sayHello = function() {
         setTimeout(function() {
-            console.log(`Hello, my name is ${this.name}`); // ❌ `this` is undefined
+            console.log(`Hello, my name is ${this.name}`); //  `this` is undefined
         }, 1000);
     };
 }
 const person = new Person("Alice");
-person.sayHello(); // ❌ `this.name` is undefined
+person.sayHello(); //  `this.name` is undefined
 
-✅ Arrow Function Example (Inherits this)
+ Arrow Function Example (Inherits this)
 code
 function Person(name) {
     this.name = name;
     this.sayHello = function() {
         setTimeout(() => {
-            console.log(`Hello, my name is ${this.name}`); // ✅ Works as expected
+            console.log(`Hello, my name is ${this.name}`); //  Works as expected
         }, 1000);
     };
 }
 const person = new Person("Alice");
-person.sayHello(); // ✅ Output: "Hello, my name is Alice"
+person.sayHello(); //  Output: "Hello, my name is Alice"
+
 🔹 Why? Arrow functions don’t create their own this, so it remains the same as in the surrounding function.
 
 🔹 Arrow Functions and arguments
 Arrow functions do not have their own arguments object.
 
 
-❌ Regular Function (Has arguments)
+ Regular Function (Has arguments)
 code
 function sum() {
-    console.log(arguments); // ✅ Works
+    console.log(arguments); //  Works
 }
-
 sum(1, 2, 3);
-❌ Arrow Function (No arguments)
+
+ Arrow Function (No arguments)
 code
 const sum = () => {
-    console.log(arguments); // ❌ ReferenceError: arguments is not defined
+    console.log(arguments); // ReferenceError: arguments is not defined
 };
 
 sum(1, 2, 3);
-✅ Workaround: Use rest parameters (...args):
 
+Workaround: Use rest parameters (...args):
 code
 const sum = (...args) => {
-    console.log(args); // ✅ Output: [1, 2, 3]
+    console.log(args); //  Output: [1, 2, 3]
 };
 
 sum(1, 2, 3);
-🔹 Arrow Functions in Real-World Projects
-✅ 1. Using Arrow Functions in map, filter, reduce
-code
 
+🔹 Arrow Functions in Real-World Projects
+ 1. Using Arrow Functions in map, filter, reduce
+code
 const numbers = [1, 2, 3, 4, 5];
 
 // Double numbers using map
 const doubled = numbers.map(num => num * 2);
-console.log(doubled); // ✅ [2, 4, 6, 8, 10]
+console.log(doubled); // [2, 4, 6, 8, 10]
 
 // Filter even numbers
 const evens = numbers.filter(num => num % 2 === 0);
-console.log(evens); // ✅ [2, 4]
+console.log(evens); //  [2, 4]
 
 // Sum of numbers using reduce
 const sum = numbers.reduce((acc, num) => acc + num, 0);
-console.log(sum); // ✅ 15
+console.log(sum); //  15
 
 
 🔹 Common Mistakes with Arrow Functions
-❌ Using this inside an object method
+Using this inside an object method
 code
 const user = {
     name: "Alice",
     sayHello: () => {
-        console.log(`Hello, my name is ${this.name}`); // ❌ `this` is undefined
+        console.log(`Hello, my name is ${this.name}`); // `this` is undefined
     }
 };
 user.sayHello();
-✅ Fix: Use a regular function instead.
+ 
+ Fix: Use a regular function instead.
 
 code
 const user = {
     name: "Alice",
     sayHello() {
-        console.log(`Hello, my name is ${this.name}`); // ✅ Works
+        console.log(`Hello, my name is ${this.name}`); //  Works
     }
 };
 user.sayHello();
 
-
-🎯 Summary
+ Summary
 ✅ Arrow functions provide a shorter syntax
 ✅ They don’t have their own this (they inherit it)
 ✅ No arguments object, use rest parameters (...args) instead

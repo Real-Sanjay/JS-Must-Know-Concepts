@@ -1,0 +1,91 @@
+1️⃣ Convert this normal function into an arrow function:
+function add(a, b) {
+  return a + b;
+}
+
+2️⃣ Write an arrow function that squares a number:
+// Example: square(4) → 16
+
+3️⃣ Write an arrow function that takes no arguments and returns "Hello Arrow!".
+
+4️⃣ Write an arrow function that implicitly returns an object:
+// Example: createUser("Alice") → { name: "Alice", isActive: true }
+
+5️⃣ Convert this function to an arrow function and see what it prints:
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+6️⃣ No own this:
+Create an object with a method that uses both:
+a normal function
+an arrow function
+
+
+const person = {
+  name: "Alice",
+  normalFn: function() { /* print this.name */ },
+  arrowFn: () => { /* print this.name */ }
+};
+Call both methods and explain the difference.
+
+7️⃣ Arrow functions can’t be constructors:
+What happens here? Why?
+const User = (name) => { this.name = name; };
+const u = new User("Alice");
+
+8️⃣ No arguments in arrow functions:
+Test this:
+const arrowArgs = () => console.log(arguments);
+arrowArgs(1, 2, 3);
+Explain what happens and why.
+
+9️⃣ Implicit return pitfalls:
+Why does this code return undefined?
+
+const makeUser = (name) => { name: name };
+console.log(makeUser("Bob"));
+ Fix it.
+
+🔟 Arrow function with default parameters:
+Write an arrow function greet that takes a name (default: "Guest") and returns Hello, <name>.
+
+1️⃣1️⃣ Arrow function inside setTimeout
+What does this print and why?
+
+
+const obj = {
+  count: 0,
+  incrementLater: function() {
+    setTimeout(() => {
+      this.count++;
+      console.log(this.count);
+    }, 1000);
+  }
+};
+obj.incrementLater();
+1️⃣2️⃣ Using arrow in map/filter
+Write an arrow function that doubles each number in an array:
+
+
+const nums = [1, 2, 3, 4];
+1️⃣3️⃣ Returning an object from an arrow in map
+Write an arrow function to transform this array:
+
+
+const names = ["Alice", "Bob"];
+// Expected: [{name: "Alice"}, {name: "Bob"}]
+1️⃣4️⃣ Arrow function & this in event listeners
+Explain why the following might not work as expected:
+
+
+button.addEventListener("click", () => {
+  this.classList.toggle("active");
+});
+ How would you fix it?
+
+1️⃣5️⃣ Arrow function IIFE (Immediately Invoked Function Expression)
+Write an arrow function that immediately runs and logs "Arrow IIFE!".
+
+1️⃣6️⃣ Arrow function in reduce()
+Write an arrow function that sums up numbers in an array using .reduce().

@@ -1,0 +1,74 @@
+1️⃣ Clone an array using spread
+const numbers = [1, 2, 3, 4];
+➡️ Clone the array without using slice() or Array.from().
+
+2️⃣ Merge two arrays with spread
+
+const fruits = ["apple", "banana"];
+const veggies = ["carrot", "spinach"];
+➡️ Combine them into one array.
+
+3️⃣ Add new items while cloning
+const colors = ["red", "blue"];
+➡️ Clone it and add "green" at the end.
+
+4️⃣ Spread a string into an array of characters
+const word = "hello";
+➡️ Convert it to ['h', 'e', 'l', 'l', 'o'].
+
+5️⃣ Pass array elements as arguments using spread
+const nums = [5, 10, 15];
+➡️ Use spread to pass the numbers to Math.max().
+
+6️⃣ Clone an object using spread
+const user = { name: "Alice", age: 25 };
+➡️ Create a new object without mutating user.
+
+7️⃣ Merge two objects with spread
+
+
+const obj1 = { a: 1, b: 2 };
+const obj2 = { b: 3, c: 4 };
+➡️ Combine them (notice what happens to b).
+
+8️⃣ Update properties while cloning
+
+const product = { name: "Laptop", price: 1000 };
+➡️ Clone and update price to 1200.
+
+9️⃣ Nested array clone issue
+
+const nested = [[1, 2], [3, 4]];
+➡️ Use spread to clone. Does it deep clone?
+
+🔟 Remove a property using spread & rest
+
+const user = { name: "Bob", age: 30, password: "secret" };
+➡️ Create a new object without password.
+
+1️⃣1️⃣ Combine multiple objects & override keys
+const base = { theme: "light", font: "Arial" };
+const userPref = { theme: "dark" };
+➡️ Merge them so user preferences take priority.
+
+1️⃣2️⃣ Spread in function parameters
+
+function logDetails(name, age, city) {
+    console.log(name, age, city);
+}
+const details = ["Alice", 25, "Paris"];
+➡️ Use spread to pass details to the function.
+
+1️⃣3️⃣ Use spread in array destructuring
+const numbers = [1, 2, 3, 4, 5];
+➡️ Extract first two numbers, and gather the rest using ....
+
+1️⃣4️⃣ Spread in default function parameters
+function registerUser(details = {...}) {}
+➡️ Use spread to create a default object for user registration.
+
+1️⃣5️⃣ Tricky mutation test
+const obj = { name: "Alice", hobbies: ["reading", "gaming"] };
+const clone = { ...obj };
+clone.hobbies.push("dancing");
+➡️ What happens to obj.hobbies? Why?

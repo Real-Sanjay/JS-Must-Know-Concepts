@@ -1,0 +1,108 @@
+1️⃣ Clone an array using spread
+const numbers = [1, 2, 3, 4];
+const clone = [...numbers];
+console.log(clone);
+
+ Output: [1, 2, 3, 4]
+➡️ Spread creates a shallow copy — changes in clone won’t affect numbers.
+
+2️⃣ Merge two arrays with spread
+
+const fruits = ["apple", "banana"];
+const veggies = ["carrot", "spinach"];
+const combined = [...fruits, ...veggies];
+console.log(combined);
+ Output: ["apple", "banana", "carrot", "spinach"]
+
+3️⃣ Add new items while cloning
+const colors = ["red", "blue"];
+const updatedColors = [...colors, "green"];
+console.log(updatedColors);
+Output: ["red", "blue", "green"]
+
+4️⃣ Spread a string into an array of characters
+const word = "hello";
+const chars = [...word];
+console.log(chars);
+ Output: ['h', 'e', 'l', 'l', 'o']
+
+5️⃣ Pass array elements as arguments using spread
+
+const nums = [5, 10, 15];
+const max = Math.max(...nums);
+console.log(max);
+ Output: 15
+➡️ Spread unpacks the array into individual arguments.
+
+6️⃣ Clone an object using spread
+const user = { name: "Alice", age: 25 };
+const cloneUser = { ...user };
+console.log(cloneUser);
+Output: { name: "Alice", age: 25 }
+
+7️⃣ Merge two objects with spread
+const obj1 = { a: 1, b: 2 };
+const obj2 = { b: 3, c: 4 };
+const merged = { ...obj1, ...obj2 };
+console.log(merged);
+Output: { a: 1, b: 3, c: 4 }
+➡️ b is overwritten by the second spread.
+
+8️⃣ Update properties while cloning
+const product = { name: "Laptop", price: 1000 };
+const updatedProduct = { ...product, price: 1200 };
+console.log(updatedProduct);
+ Output: { name: "Laptop", price: 1200 }
+
+9️⃣ Nested array clone issue
+const nested = [[1, 2], [3, 4]];
+const clone = [...nested];
+clone[0].push(99);
+console.log(nested);
+Output: [[1, 2, 99], [3, 4]]
+Important: Spread only does shallow cloning — nested arrays/objects remain linked.
+
+🔟 Remove a property using spread & rest
+const user = { name: "Bob", age: 30, password: "secret" };
+const { password, ...safeUser } = user;
+console.log(safeUser);
+ Output: { name: "Bob", age: 30 }
+
+1️⃣1️⃣ Combine multiple objects & override keys
+const base = { theme: "light", font: "Arial" };
+const userPref = { theme: "dark" };
+const settings = { ...base, ...userPref };
+console.log(settings);
+ Output: { theme: "dark", font: "Arial" }
+➡️ Last spread wins (user preferences override defaults).
+
+1️⃣2️⃣ Spread in function parameters
+function logDetails(name, age, city) {
+    console.log(name, age, city);
+}
+const details = ["Alice", 25, "Paris"];
+logDetails(...details);
+ Output: Alice 25 Paris
+
+1️⃣3️⃣ Spread in array destructuring
+const numbers = [1, 2, 3, 4, 5];
+const [first, second, ...rest] = numbers;
+console.log(first, second, rest);
+Output: 1 2 [3, 4, 5]
+
+1️⃣4️⃣ Spread in default function parameters
+function registerUser(user = { ...{ name: "Guest", age: 0 } }) {
+    console.log(user);
+}
+registerUser();
+registerUser({ name: "Alice", age: 25 });
+Output:
+{ name: "Guest", age: 0 }
+{ name: "Alice", age: 25 }
+
+1️⃣5️⃣ Tricky mutation test
+const obj = { name: "Alice", hobbies: ["reading", "gaming"] };
+const clone = { ...obj };
+clone.hobbies.push("dancing");
+console.log(obj.hobbies);
+Output: ["reading", "gaming", "dancing"]

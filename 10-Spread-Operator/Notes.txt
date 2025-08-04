@@ -1,4 +1,4 @@
-JavaScript Spread Syntax (...) 🚀
+JavaScript Spread Syntax (...) 
 The spread syntax (...) allows expanding iterable elements (arrays, objects, strings) into individual elements. It is useful for copying, merging, and passing arguments to functions dynamically.
 
 🔹 1️⃣ Spread Syntax with Arrays
@@ -48,11 +48,12 @@ console.log(sum(...nums)); // 6
 
 1️⃣ Copying an Object
 Code
-const obj1 = { name: "Sanjay", age: 25 };
+const obj1 = { name: "Sanjay", age: 24 };
 const obj2 = { ...obj1 };
 
-console.log(obj2); // { name: "Sanjay", age: 25 }
+console.log(obj2); // { name: "Sanjay", age: 24 }
 console.log(obj1 === obj2); // false (different objects)
+
 2️⃣ Merging Objects
 Instead of Object.assign(), spread is simpler:
 
@@ -62,6 +63,7 @@ const objB = { c: 3, d: 4 };
 
 const mergedObj = { ...objA, ...objB };
 console.log(mergedObj); // { a: 1, b: 2, c: 3, d: 4 }
+
 3️⃣ Overriding Properties
 Later properties overwrite earlier ones:
 

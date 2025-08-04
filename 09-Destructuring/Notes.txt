@@ -1,10 +1,10 @@
-📌 Destructuring 
+ Destructuring 
 
 🔹 What is Destructuring?
 Destructuring allows you to extract values from arrays and objects easily and assign them to variables. It makes the code cleaner and more readable.
 
 🔹 Array Destructuring
-✅ Extract values from an array into variables
+ Extract values from an array into variables
 
 code
 const numbers = [10, 20, 30];
@@ -16,20 +16,21 @@ const b = numbers[1];
 // With destructuring
 const [x, y, z] = numbers;
 
-console.log(x); // ✅ 10
-console.log(y); // ✅ 20
-console.log(z); // ✅ 30
-📌 Skipping Values
+console.log(x); //  10
+console.log(y); //  20
+console.log(z); //  30
 
+Skipping Values
 code
 const nums = [100, 200, 300, 400];
 
 // Skip the second value
 const [first, , third] = nums;
 
-console.log(first);  // ✅ 100
-console.log(third);  // ✅ 300
-📌 Using Default Values
+console.log(first);  //  100
+console.log(third);  //  300
+
+Using Default Values
 
 code
 const values = [5];
@@ -37,10 +38,11 @@ const values = [5];
 // Assign default value if undefined
 const [a = 10, b = 20] = values;
 
-console.log(a); // ✅ 5
-console.log(b); // ✅ 20 (default value)
+console.log(a); //  5
+console.log(b); // 20 (default value)
+
 🔹 Object Destructuring
-✅ Extract values from an object into variables
+Extract values from an object into variables
 
 code
 const user = { name: "Alice", age: 25, city: "Paris" };
@@ -52,10 +54,11 @@ const age1 = user.age;
 // With destructuring
 const { name, age, city } = user;
 
-console.log(name); // ✅ Alice
-console.log(age);  // ✅ 25
-console.log(city); // ✅ Paris
-📌 Using Default Values
+console.log(name); //  Alice
+console.log(age);  //  25
+console.log(city); //  Paris
+
+Using Default Values
 
 code
 const person = { name: "Bob", age: 30 };
@@ -63,22 +66,22 @@ const person = { name: "Bob", age: 30 };
 // Assign default value if property is missing
 const { name, age, country = "Unknown" } = person;
 
-console.log(name);    // ✅ Bob
-console.log(country); // ✅ Unknown (default value)
-📌 Renaming Variables
+console.log(name);    //  Bob
+console.log(country); //  Unknown (default value)
 
+Renaming Variables
 code
 const user = { fullName: "Alice Johnson", age: 28 };
 
 // Renaming properties while destructuring
 const { fullName: name, age: userAge } = user;
 
-console.log(name);    // ✅ Alice Johnson
-console.log(userAge); // ✅ 28
+console.log(name);    // Alice Johnson
+console.log(userAge); // 28
 
 
 🔹 Destructuring in Function Parameters
-✅ Pass an object and extract values directly inside function parameters
+ Pass an object and extract values directly inside function parameters
 
 code
 const displayUser = ({ name, age }) => {
@@ -87,18 +90,20 @@ const displayUser = ({ name, age }) => {
 
 const user = { name: "Charlie", age: 35 };
 displayUser(user); 
-// ✅ Output: Name: Charlie, Age: 35
-📌 Using Default Values in Function Parameters
+// Output: Name: Charlie, Age: 35
+
+ Using Default Values in Function Parameters
 
 code
 const greet = ({ name = "Guest" }) => {
     console.log(`Hello, ${name}!`);
 };
 
-greet({ name: "Alice" }); // ✅ Hello, Alice!
-greet({});               // ✅ Hello, Guest!
+greet({ name: "Alice" }); //  Hello, Alice!
+greet({});               //  Hello, Guest!
+
 🔹 Nested Destructuring
-✅ Extract values from nested objects
+Extract values from nested objects
 
 code
 const person = {
@@ -112,9 +117,9 @@ const person = {
 // Destructuring nested object
 const { address: { city, zip } } = person;
 
-console.log(city); // ✅ New York
-console.log(zip);  // ✅ 10001
-✅ Extract values from nested arrays
+console.log(city); //  New York
+console.log(zip);  //  10001
+Extract values from nested arrays
 
 code
 const colors = [["red", "green"], ["blue", "yellow"]];
@@ -122,11 +127,11 @@ const colors = [["red", "green"], ["blue", "yellow"]];
 // Extract first color from each sub-array
 const [[firstColor], [, secondColor]] = colors;
 
-console.log(firstColor);  // ✅ red
-console.log(secondColor); // ✅ yellow
+console.log(firstColor);  //  red
+console.log(secondColor); //  yellow
 
 
-🎯 Summary
-✅ Destructuring simplifies extracting values from arrays and objects
-✅ Works in function parameters for cleaner code
-✅ Supports default values, renaming, and nested structures
+ Summary
+ Destructuring simplifies extracting values from arrays and objects
+ Works in function parameters for cleaner code
+ Supports default values, renaming, and nested structures

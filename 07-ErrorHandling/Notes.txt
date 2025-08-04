@@ -1,27 +1,27 @@
-Error Handling in JavaScript 🚀
+Error Handling in JavaScript 
 Error handling is crucial in JavaScript to ensure that unexpected issues don’t break the entire application. JavaScript provides multiple ways to catch, handle, and prevent errors.
 
 🔹 Types of Errors in JavaScript
 1️⃣ Syntax Error – Invalid code structure
 Code
 console.log("Hello" // Missing closing parenthesis
-✅ Fix: Close the parentheses properly.
+Fix: Close the parentheses properly.
 
 2️⃣ Reference Error – Accessing undefined variables
 Code
-console.log(myVariable); // ❌ myVariable is not defined
-✅ Fix: Declare the variable before using it.
+console.log(myVariable); //  myVariable is not defined
+ Fix: Declare the variable before using it.
 
 3️⃣ Type Error – Incorrect data type usage
 Code
 let num = 10;
-num(); // ❌ TypeError: num is not a function
-✅ Fix: Ensure the correct data type is used.
+num(); //  TypeError: num is not a function
+ Fix: Ensure the correct data type is used.
 
 🔹 Handling Errors Using try...catch
 We can catch and handle errors gracefully instead of letting them crash the application.
 
-🚀 Example: Handling an Error
+Example: Handling an Error
 Code
 try {
     let result = undefinedVariable * 10;
@@ -29,12 +29,11 @@ try {
     console.log("An error occurred:", error.message);
 }
 console.log("Program continues...");
-✅ Output:
-
-
+Output:
 An error occurred: undefinedVariable is not defined
 Program continues...
-✔️ Even though an error occurs, the program does not stop execution.
+
+Even though an error occurs, the program does not stop execution.
 
 🔹 catch(error) Object Properties
 Inside catch(error), the error object contains:
@@ -44,17 +43,16 @@ name → Error type (e.g., ReferenceError, TypeError)
 stack → Where the error occurred
 
 
-🚀 Example: Catching Error Details
+Example: Catching Error Details
 Code
 try {
     let num = 10;
-    num.toUpperCase(); // ❌ TypeError
+    num.toUpperCase(); //  TypeError
 } catch (error) {
     console.log("Error Name:", error.name);
     console.log("Error Message:", error.message);
 }
-✅ Output:
-
+Output:
 Code
 Error Name: TypeError
 Error Message: num.toUpperCase is not a function
@@ -62,7 +60,7 @@ Error Message: num.toUpperCase is not a function
 🔹 Using finally – Always Executes
 finally always runs whether an error occurs or not.
 
-🚀 Example: Ensuring Cleanup
+ Example: Ensuring Cleanup
 Code
 function processTask() {
     try {
@@ -76,17 +74,18 @@ function processTask() {
 }
 
 processTask();
-✅ Output:
+Output:
 
 Processing...
 Error: Something went wrong!
 Cleaning up resources...
-✔️ Use finally for cleanup tasks (e.g., closing connections, removing temporary files).
+
+ Use finally for cleanup tasks (e.g., closing connections, removing temporary files).
 
 🔹 Throwing Custom Errors
 We can manually throw errors using throw.
 
-🚀 Example: Custom Error Handling
+Example: Custom Error Handling
 Code
 function validateAge(age) {
     if (age < 18) {
@@ -100,25 +99,25 @@ try {
 } catch (error) {
     console.log("Validation failed:", error.message);
 }
-✅ Output:
+ Output:
 
 
 Validation failed: Age must be 18 or above.
-✔️ Use throw to reject invalid data instead of letting errors go unnoticed.
+ Use throw to reject invalid data instead of letting errors go unnoticed.
 
 🔹 Handling Asynchronous Errors
 Errors in asynchronous functions won’t be caught by normal try...catch.
 
-🚨 Incorrect Handling
+Incorrect Handling
 Code
 try {
     setTimeout(() => {
         throw new Error("Async error");
     }, 1000);
 } catch (error) {
-    console.log("Caught error:", error.message); // ❌ Won't work!
+    console.log("Caught error:", error.message); // Won't work!
 }
-✅ Fix: Use .catch() with Promises
+ Fix: Use .catch() with Promises
 
 Code
 function fetchData() {
@@ -132,11 +131,9 @@ function fetchData() {
 fetchData()
     .then((data) => console.log(data))
     .catch((error) => console.log("Caught error:", error));
-✅ Output (After 1s delay):
-
-
+ Output (After 1s delay):
 Caught error: Data fetch failed!
-✔️ Always use .catch() for Promises!
+Always use .catch() for Promises!
 
 🔹 Handling Errors in Async/Await
 With async/await, use try...catch to handle errors properly.
@@ -154,13 +151,11 @@ async function getUserData() {
 }
 
 getUserData();
-✅ Output:
-
-
+Output:
 Fetch failed: Failed to fetch
-✔️ Always wrap await calls in try...catch to handle failures!
+Always wrap await calls in try...catch to handle failures!
 
-🔹 Real-World Example – Validating User Input
+🔹Real-World Example – Validating User Input
 Code
 function processUserInput(input) {
     try {
@@ -171,14 +166,13 @@ function processUserInput(input) {
     }
 }
 
-processUserInput("");  // ❌ Throws error
-processUserInput("Hello");  // ✅ Works fine
-✅ Output:
+processUserInput("");  //  Throws error
+processUserInput("Hello");  // Works fine
 
-
+Output:
 Error: Input cannot be empty!
 Processing input: Hello
-✔️ Prevents invalid input from breaking the system!
+ Prevents invalid input from breaking the system!
 
 🔹 Key Takeaways
 ✔️ try...catch prevents program crashes

@@ -1,0 +1,135 @@
+1️⃣ Convert to arrow function
+function add(a, b) {
+  return a + b;
+}
+
+Solution:
+const add = (a, b) => {
+  return a + b;
+};
+console.log(add(2, 3)); //  5
+
+➡️ Explanation: Arrow functions can replace normal functions for shorter syntax.
+
+2️⃣ Arrow function to square a number
+
+const square = (num) => num * num;
+console.log(square(4)); //  16
+➡️ Note: Since there’s only one expression, you can omit {} and return.
+
+3️⃣ Arrow function with no arguments
+const sayHello = () => "Hello Arrow!";
+console.log(sayHello()); //  "Hello Arrow!"
+
+4️⃣ Arrow function that returns an object
+const createUser = (name) => ({ name: name, isActive: true });
+console.log(createUser("Alice")); 
+//  { name: "Alice", isActive: true }
+➡️ Gotcha: When returning an object, wrap it in () to avoid confusion with {} block syntax.
+
+5️⃣ Convert greet function
+const greet = (name) => `Hello, ${name}!`;
+console.log(greet("Bob")); // "Hello, Bob!"
+
+6️⃣ this in arrow vs normal function
+const person = {
+  name: "Alice",
+  normalFn: function () {
+    console.log("normalFn:", this.name);
+  },
+  arrowFn: () => {
+    console.log("arrowFn:", this.name);
+  }
+};
+
+person.normalFn(); //  "normalFn: Alice"
+person.arrowFn();  //  "arrowFn: undefined"
+ Why?
+normalFn → this refers to person
+
+arrowFn → this is taken from the outer scope (here, global object).
+
+7️⃣ Arrow can’t be constructors
+
+const User = (name) => { this.name = name; };
+const u = new User("Alice"); //  TypeError: User is not a constructor
+
+Why?
+
+Arrow functions don’t have their own this or prototype, so they cannot be used with new.
+
+8️⃣ No arguments in arrow functions
+
+const arrowArgs = () => console.log(arguments);
+arrowArgs(1, 2, 3); 
+//  ReferenceError: arguments is not defined
+ Fix (use rest parameters):
+
+
+const arrowArgs = (...args) => console.log(args);
+arrowArgs(1, 2, 3); //  [1, 2, 3]
+
+9️⃣ Implicit return pitfall
+
+const makeUser = (name) => { name: name };
+console.log(makeUser("Bob")); //  undefined
+ Fix:
+
+const makeUser = (name) => ({ name: name });
+console.log(makeUser("Bob")); //  { name: "Bob" }
+
+🔟 Arrow with default parameters
+const greet = (name = "Guest") => `Hello, ${name}`;
+console.log(greet()); //  "Hello, Guest"
+console.log(greet("Alice")); //  "Hello, Alice"
+
+
+1️⃣1️⃣ Arrow function inside setTimeout
+
+const obj = {
+  count: 0,
+  incrementLater: function() {
+    setTimeout(() => {
+      this.count++;
+      console.log(this.count);
+    }, 1000);
+  }
+};
+obj.incrementLater(); //  1 after 1 second
+ Why?
+Arrow functions inherit this from parent scope (obj here).
+
+1️⃣2️⃣ Arrow with map
+
+const nums = [1, 2, 3, 4];
+const doubled = nums.map(n => n * 2);
+console.log(doubled); //  [2, 4, 6, 8]
+
+1️⃣3️⃣ Returning an object in map
+const names = ["Alice", "Bob"];
+const userObjects = names.map(name => ({ name }));
+console.log(userObjects);
+//  [ { name: 'Alice' }, { name: 'Bob' } ]
+
+1️⃣4️⃣ Arrow function & this in event listeners
+
+button.addEventListener("click", () => {
+  this.classList.toggle("active");
+});
+ Problem: Here this is not the button — it’s inherited from the outer scope (probably window).
+
+Fix:
+button.addEventListener("click", function() {
+  this.classList.toggle("active");
+});
+➡️ Use normal function when you need this to be the element.
+
+1️⃣5️⃣ Arrow IIFE
+
+(() => console.log("Arrow IIFE!"))(); 
+//  Immediately logs: Arrow IIFE!
+
+1️⃣6️⃣ Arrow in reduce
+const nums = [1, 2, 3, 4];
+const sum = nums.reduce((acc, curr) => acc + curr, 0);
+console.log(sum); //  10
