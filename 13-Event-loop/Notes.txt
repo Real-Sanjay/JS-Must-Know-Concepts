@@ -1,4 +1,4 @@
-🚀 The Event Loop in JavaScript
+The Event Loop in JavaScript
 🔹 What is the Event Loop?
 The Event Loop is what enables JavaScript to handle asynchronous operations (like timers, API calls, and DOM events) efficiently, despite being single-threaded.
 
@@ -30,12 +30,12 @@ second();
 third();
 
 🔹 Output:
-✅ "First"
-✅ "Second"
-✅ "Third"
+"First"
+"Second"
+"Third"
 
 
-💡 All functions execute synchronously in the Call Stack.
+All functions execute synchronously in the Call Stack.
 
 🔹 Event Loop in Action
 code
@@ -56,12 +56,12 @@ console.log("End");
 4️⃣ "Timeout" (Macrotask)
 
 🔹 Output:
-✅ "Start"
-✅ "End"
-✅ "Promise"
-✅ "Timeout"
+ "Start"
+ "End"
+ "Promise"
+ "Timeout"
 
-💡 Microtasks (Promise) execute before Macrotasks (setTimeout).
+ Microtasks (Promise) execute before Macrotasks (setTimeout).
 
 🔹 Microtasks vs Macrotasks
 Task Type	Example
@@ -79,8 +79,8 @@ fetch("https://jsonplaceholder.typicode.com/posts/1")
 console.log("Fetching started...");
 
 🔹 Output:
-✅ "Fetching started..." (Sync)
-✅ "Fetched Data: {...}" (Async)
+ "Fetching started..." (Sync)
+ "Fetched Data: {...}" (Async)
 
 💡 The fetch() API is non-blocking. It runs in the background while JavaScript continues execution.
 

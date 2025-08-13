@@ -1,13 +1,13 @@
-🚀 Asynchronous Communication in JavaScript
+Asynchronous Communication in JavaScript
 Asynchronous communication is one of the most important concepts in JavaScript, especially when dealing with APIs, databases, or timers. 
 
 🔹 What is Asynchronous Communication?
 JavaScript is single-threaded, meaning it can execute only one task at a time.
 But real-world applications need to:
-✅ Fetch data from an API
-✅ Read/write files
-✅ Wait for user input
-✅ Handle timers
+- Fetch data from an API
+- Read/write files
+- Wait for user input
+- Handle timers
 
 To prevent blocking the execution, JavaScript uses asynchronous communication.
 
@@ -17,7 +17,7 @@ code
 console.log("Start");
 for (let i = 0; i < 1e9; i++) {} // Simulates a time-consuming task
 console.log("End");
-✅ This blocks execution until the loop completes, making the page unresponsive.
+ This blocks execution until the loop completes, making the page unresponsive.
 
 2️⃣ Asynchronous Execution (Non-Blocking)
 code
@@ -28,10 +28,7 @@ setTimeout(() => {
 }, 2000);
 
 console.log("End");
-✅ Output:
 
-
-Asynchronous Task Done!
 ✔️ The callback inside setTimeout executes later, keeping the program responsive.
 
 🔹 Ways to Handle Asynchronous Code
@@ -55,7 +52,8 @@ fetchData((data) => {
 });
 ✔️ The callback ensures data is printed only after fetching is complete.
 
-🚨 Problem with Callbacks:
+
+Problem with Callbacks:
 
 Callback Hell (Nested Callbacks)
 Difficult to Read & Maintain
@@ -89,12 +87,13 @@ step1(() => {
         });
     });
 });
+
 2️⃣ Promises – The Modern Approach
 A Promise is an object that represents a value that may be available now, later, or never.
 It has three states:
-✅ Pending – Initial state
-✅ Resolved (Fulfilled) – Operation successful
-✅ Rejected – Operation failed
+Pending – Initial state
+Resolved (Fulfilled) – Operation successful
+Rejected – Operation failed
 
 code
 function fetchData() {
@@ -130,7 +129,7 @@ async function getData() {
 }
 
 getData();
-✅ Output:
+Output:
 
 Fetching data...
 (Data received after 2s)
@@ -157,7 +156,7 @@ getUserData();
 🔹 The Event Loop – How Async Works Internally
 JavaScript handles async tasks using the Event Loop.
 
-🚀 Execution Flow
+ Execution Flow
 1️⃣ Call Stack – Executes synchronous code
 2️⃣ Web APIs – Handles async tasks like setTimeout, fetch, DOM events
 3️⃣ Task Queue & Microtask Queue – Stores async callbacks
@@ -172,7 +171,7 @@ setTimeout(() => console.log("Timeout"), 0);
 Promise.resolve().then(() => console.log("Promise"));
 
 console.log("End");
-✅ Output:
+Output:
 
 
 Promise

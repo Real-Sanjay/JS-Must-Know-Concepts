@@ -1,10 +1,10 @@
-📌 Call Stack in JavaScript
+ Call Stack in JavaScript
 🔹 What is the Call Stack?
 The Call Stack is a data structure used by JavaScript to manage function execution.
 
 It follows the LIFO (Last In, First Out) principle.
 Functions enter the stack when called and exit when execution completes.
-📌 Think of it as a stack of plates—the last plate added must be removed first!
+ Think of it as a stack of plates—the last plate added must be removed first!
 
 🔹 How the Call Stack Works (Step-by-Step Execution)
 Example 1: Simple Function Execution
@@ -29,12 +29,12 @@ second() is called	Added to the stack
 console.log("Second function") runs	Prints output, then second() is removed
 console.log("End") runs	Prints "End", stack is now empty
 
-✅ Output:
+Output:
 
 First function
 Second function
 End
-✅ Final Stack: Empty
+Final Stack: Empty
 
 🔹 Nested Function Calls in the Call Stack
 Example 2: Function Calls Inside Functions
@@ -61,14 +61,14 @@ Execution Flow
 6️⃣ first() completes → Removed from the stack
 7️⃣ console.log("End") runs
 
-✅ Output:
+ Output:
 
 
 First function
 Second function
 First function finished
 End
-✅ Final Stack: Empty
+Final Stack: Empty
 
 🔹 Call Stack and Recursion
 The call stack is important in recursive functions (functions that call themselves).
@@ -100,16 +100,14 @@ Return from countdown(1)	countdown(3) → countdown(2)
 Return from countdown(2)	countdown(3)
 Return from countdown(3)	Stack is now empty
 
-✅ Output:
-
-
+Output:
 3
 2
 1
 Done!
 
 
-🚨 Stack Overflow Error! If recursion doesn't have a stopping condition, it keeps adding function calls until stack overflow occurs.
+ Stack Overflow Error! If recursion doesn't have a stopping condition, it keeps adding function calls until stack overflow occurs.
 
 code
 function infiniteLoop() {
@@ -117,8 +115,8 @@ function infiniteLoop() {
   infiniteLoop();
 }
 
-infiniteLoop(); // ❌ Stack Overflow Error
-🔴 JavaScript will crash because the stack never clears.
+infiniteLoop(); //  Stack Overflow Error
+ JavaScript will crash because the stack never clears.
 
 🔹 Asynchronous Code & The Call Stack
 JavaScript is single-threaded, meaning it executes one function at a time in the call stack.
@@ -141,17 +139,17 @@ setTimeout()	Moves to Web APIs, doesn't enter the call stack
 console.log("End")	Prints "End"
 setTimeout() finishes (after 0ms)	Moves to the Callback Queue
 Event Loop pushes it to the stack	Prints "Inside setTimeout"
-✅ Output:
+
+Output:
 
 Inside setTimeout
 🔹 Even though setTimeout has 0ms, it executes last because the call stack executes synchronous code first.
 
 
 
-🎯 Summary
-✅ Call Stack follows LIFO (Last In, First Out).
-✅ Functions enter the stack when called and exit when completed.
-✅ Recursion can cause Stack Overflow if there's no exit condition.
-✅ Asynchronous operations (setTimeout, fetch) do not block the call stack.
-✅ Event Loop moves asynchronous functions back into the call stack when ready.
+ Summary
+Call Stack follows LIFO (Last In, First Out).
+Functions enter the stack when called and exit when completed.
+Recursion can cause Stack Overflow if there's no exit condition. Asynchronous operations (setTimeout, fetch) do not block the call stack.
+Event Loop moves asynchronous functions back into the call stack when ready.
 

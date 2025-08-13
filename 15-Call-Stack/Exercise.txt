@@ -1,4 +1,4 @@
-🛠️ Exercises: Master Call Stack
+ Exercises: Master Call Stack
 Exercise 1: Predict the Output
 code
 function one() {
@@ -19,7 +19,7 @@ function three() {
 
 one();
 console.log("End");
-✅ What is the output?
+ What is the output?
 
 Exercise 2: Debug Stack Overflow
 Fix this infinite recursion to prevent stack overflow:
@@ -31,7 +31,7 @@ function countdown(n) {
 }
 
 countdown(5);
-✅ How can you fix it?
+How can you fix it?
 
 Exercise 3: Understand Asynchronous Call Stack
 Predict the output of this:
@@ -46,4 +46,4 @@ console.log("C");
 setTimeout(() => console.log("D"), 500);
 
 console.log("E");
-✅ What will be printed first?
+ What will be printed first?

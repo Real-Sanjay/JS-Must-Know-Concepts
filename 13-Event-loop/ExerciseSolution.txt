@@ -2,10 +2,10 @@
 
 
 1️⃣ Exercise 1 Output:
-✅ "Start"
-✅ "End"
-✅ "Promise"
-✅ "Timeout"
+ "Start"
+ "End"
+ "Promise"
+ "Timeout"
 
 
 2️⃣ Exercise 2 Fix:
@@ -28,7 +28,9 @@ function debounce(func, delay) {
     let timeout;
     return function (...args) {
         clearTimeout(timeout);
-        timeout = setTimeout(func(), delay);
+        timeout = setTimeout(()=>{
+            func(...args)
+        }, delay);
     };
 }
 

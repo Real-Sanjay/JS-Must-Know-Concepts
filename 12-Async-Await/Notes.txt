@@ -5,6 +5,7 @@ Async/Await is a modern way to handle asynchronous operations in JavaScript, mak
 Avoids callback hell
 Easier to read and maintain compared to Promises
 Handles errors using try/catch
+
 🔹 How Does It Work?
 1️⃣ async Keyword
 Declares a function as asynchronous, which means it always returns a Promise.
@@ -45,12 +46,14 @@ async function getUserData() {
 }
 
 getUserData();
+
 🔸 Step-by-Step Execution
 fetch(url) returns a Promise.
 await pauses execution until the API responds.
 response.json() returns another Promise, which await resolves.
 The data is printed to the console.
 If an error occurs, catch handles it.
+
 🔹 Handling Multiple Async Calls
 Sometimes, we need to run multiple async operations at once.
 
@@ -73,7 +76,7 @@ fetchMultipleUsers();
 ✔️ All requests happen in parallel instead of waiting for one to finish.
 
 🔹 Async/Await in Loops
-❌ Common Mistake: await Inside forEach
+Common Mistake: await Inside forEach
  Code
 async function fetchUsers() {
     let users = [1, 2, 3];
@@ -148,9 +151,9 @@ fetchData();
 
 
 🔹 Summary
-Feature	Description
-async	Declares a function as asynchronous (returns a Promise).
-await	Waits for a Promise to resolve before continuing execution.
+Feature	    Description
+async	    Declares a function as asynchronous (returns a Promise).
+await	    Waits for a Promise to resolve before continuing execution.
 try/catch	Handles errors inside an async function.
 Promise.all	Runs multiple async functions in parallel.
 for...of	Best way to iterate with await.

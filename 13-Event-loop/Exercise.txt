@@ -1,6 +1,4 @@
-.
-
-🎯 Exercises
+Exercises
 Exercise 1: Predict the Output
 code
 console.log("Start");
