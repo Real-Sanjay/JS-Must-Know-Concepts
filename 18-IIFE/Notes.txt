@@ -1,13 +1,13 @@
-🚀 IIFE (Immediately Invoked Function Expression) in JavaScript
+IIFE (Immediately Invoked Function Expression) in JavaScript
 🔹 What is an IIFE?
 An Immediately Invoked Function Expression (IIFE) is a JavaScript function that executes immediately after being defined.
 
-📌 Syntax
+Syntax
 (function () {
     console.log("This function runs immediately!");
 })();
 
-👉 The function is wrapped in parentheses ( ... ) and is immediately invoked using ();.
+The function is wrapped in parentheses ( ... ) and is immediately invoked using ();.
 
 🔹 Why Use an IIFE?
 1️⃣ Avoid polluting the global scope
@@ -22,7 +22,8 @@ code
     console.log("IIFE executed!");
 })(); 
 🔹 Output: "IIFE executed!"
-💡 The function runs immediately without needing an explicit call.
+
+The function runs immediately without needing an explicit call.
 
 2️⃣ IIFE with Parameters
 code
@@ -30,7 +31,8 @@ code
     console.log(`Hello, ${name}!`);
 })("Alice");
 🔹 Output: "Hello, Alice!"
-💡 The IIFE takes "Alice" as an argument and executes.
+
+The IIFE takes "Alice" as an argument and executes.
 
 3️⃣ IIFE with Return Value
 code
@@ -42,8 +44,8 @@ const user = (function () {
         },
     };
 })();
-console.log(user.getName()); // ✅ "Bob"
-💡 The IIFE returns an object that provides access to the private variable name.
+console.log(user.getName()); //  "Bob"
+ The IIFE returns an object that provides access to the private variable name.
 
 4️⃣ Using IIFE for Private Variables (Encapsulation)
 🔹 Scenario: Prevent variables from leaking into the global scope.
@@ -54,8 +56,8 @@ code
     console.log(`API Key: ${apiKey}`);
 })();
 
-console.log(apiKey); // ❌ ReferenceError: apiKey is not defined
-💡 Why? apiKey is inside the IIFE scope and not accessible globally.
+console.log(apiKey); //  ReferenceError: apiKey is not defined
+Why? apiKey is inside the IIFE scope and not accessible globally.
 
 5️⃣ IIFE with Arrow Function
 code
@@ -63,7 +65,7 @@ code
     console.log("Arrow function IIFE!");
 })();
 🔹 Output: "Arrow function IIFE!"
-💡 Same behavior, but using ES6 arrow functions.
+Same behavior, but using ES6 arrow functions.
 
 6️⃣ Asynchronous IIFE (Async/Await in IIFE)
 🔹 Scenario: Fetch data immediately when the script runs.
@@ -74,10 +76,10 @@ code
     const user = await response.json();
     console.log(`User fetched: ${user.name}`);
 })();
-💡 This avoids using an extra function and fetches data immediately.
+ This avoids using an extra function and fetches data immediately.
 
 7️⃣ IIFE in Real-World Project Scenarios
-🛒 E-commerce Website: Cart Management
+ E-commerce Website: Cart Management
 code
 const Cart = (function () {
     let items = []; // Private variable
@@ -93,12 +95,12 @@ const Cart = (function () {
     };
 })();
 
-Cart.addItem("Shoes"); // ✅ "Added Shoes to cart."
-console.log(Cart.getItems()); // ✅ ["Shoes"]
-💡 Encapsulation: items is private, and we expose only necessary methods.
+Cart.addItem("Shoes"); //  "Added Shoes to cart."
+console.log(Cart.getItems()); //  ["Shoes"]
+Encapsulation: items is private, and we expose only necessary methods.
 
 
-📌 Key Takeaways
+ Key Takeaways
 1️⃣ IIFE runs immediately after definition
 2️⃣ Helps avoid global variable pollution
 3️⃣ Useful for private variables & module patterns

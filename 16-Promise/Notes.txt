@@ -1,4 +1,4 @@
-🚀 Promises in JavaScript
+Promises in JavaScript
 🔹 What is a Promise?
 A Promise is an object that represents the eventual completion (or failure) of an asynchronous operation. It allows handling asynchronous operations more cleanly than callbacks.
 
@@ -14,9 +14,9 @@ const myPromise = new Promise((resolve, reject) => {
     let success = true;
     setTimeout(() => {
         if (success) {
-            resolve("Operation successful!"); // 🟢 Fulfilled
+            resolve("Operation successful!"); //  Fulfilled
         } else {
-            reject("Operation failed!"); // 🔴 Rejected
+            reject("Operation failed!"); //  Rejected
         }
     }, 2000);
 });
@@ -53,8 +53,8 @@ fetchData()
     .then((processed) => console.log(processed))
     .catch((error) => console.log("Error:", error));
 🔹 Output:
-✅ "Data Loaded"
-✅ "Processed Data"
+ "Data Loaded"
+ "Processed Data"
 
 🔹 Using .finally()
 finally() runs whether the Promise resolves or rejects.
@@ -92,9 +92,9 @@ const p3 = new Promise((res) => setTimeout(() => res("Third"), 3000));
 
 Promise.all([p1, p2, p3]).then((values) => console.log(values));
 🔹 Output after 3 sec:
-✅ ["First", "Second", "Third"]
+ ["First", "Second", "Third"]
 
-💡 If any Promise fails, Promise.all() rejects all.
+If any Promise fails, Promise.all() rejects all.
 
 🔹 Promise.race() – First Resolved Promise Wins
 Promise.race() returns the first fulfilled/rejected Promise.
@@ -114,7 +114,7 @@ const fail1 = new Promise((_, reject) => setTimeout(() => reject("Fail 1"), 1000
 const success = new Promise((res) => setTimeout(() => res("Success"), 2000));
 
 Promise.any([fail1, success])
-    .then((result) => console.log(result)) // ✅ "Success"
+    .then((result) => console.log(result)) //  "Success"
     .catch((err) => console.log(err));
 💡 Use case: Getting the first successful API response.
 
@@ -147,8 +147,7 @@ fetchWithRetry("https://jsonplaceholder.typicode.com/posts/1", 3)
     .then((data) => console.log(data))
     .catch((err) => console.log("Final Error:", err));
 
-
-    📌 Key Takeaways
+ Key Takeaways
 1️⃣ Promises handle async operations efficiently
 2️⃣ .then() for success, .catch() for errors, .finally() for cleanup
 3️⃣ Chaining allows sequential operations

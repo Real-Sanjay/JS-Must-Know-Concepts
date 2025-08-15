@@ -68,13 +68,13 @@ This is useful in e-commerce platforms where discounts are frequently applied.
 c) Event Listeners and Closures
 Closures help retain values even after an event occurs.
 
-function buttonHandler(color) {
+function buttonblueButtonHandler(color) {
     return function () {
         document.body.style.backgroundColor = color;
     };
 }
 
-const blueButton = document.getElementById("blue");
+const  = document.getElementById("blue");
 const redButton = document.getElementById("red");
 
 blueButton.addEventListener("click", buttonHandler("blue"));
@@ -89,14 +89,14 @@ for (var i = 1; i <= 3; i++) {
         console.log(`Button ${i} clicked`);
     }, 1000);
 }
-❌ Problem: The output will be:
+ Problem: The output will be:
 
 Button 4 clicked
 Button 4 clicked
 Button 4 clicked
 This happens because setTimeout captures the final value of i, which is 4.
 
-✅ Solution using Closures
+ Solution using Closures
 
 for (var i = 1; i <= 3; i++) {
     (function (j) {
@@ -107,7 +107,7 @@ for (var i = 1; i <= 3; i++) {
 }
 Now, j is uniquely assigned for each iteration.
 
-✅ Solution using let
+ Solution using let
 
 
 for (let i = 1; i <= 3; i++) {

@@ -1,14 +1,14 @@
 // Exercise Answers
-// 1️⃣ Exercise 1 Output:
-// ✅ "Hello"
-// ✅ "Done"
-// 💡 Works fine! It prints synchronously first, then resolves.
+ 1️⃣ Exercise 1 Output:
+ "Hello"
+ "Done"
+  Works fine! It prints synchronously first, then resolves.
 
 
 // Exercise 2:
-// function getUserData(userId) {
-//     return fetch(`https://jsonplaceholder.typicode.com/users/${userId}`).then((res) => res.json());
-// }
+ function getUserData(userId) {
+    return fetch(`https://jsonplaceholder.typicode.com/users/${userId}`).then((res) => res.json());
+ }
 
 // async function fetchUsers() {
 //     const userIds = [1, 2, 3];
