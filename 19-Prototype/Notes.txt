@@ -1,4 +1,4 @@
-JavaScript Prototype 🚀
+JavaScript Prototype 
 In JavaScript, everything is an object (except primitive types like string, number, etc.). Prototype is a mechanism that allows objects to inherit properties and methods from other objects.
 
 🔹 What is Prototype?
@@ -19,7 +19,8 @@ const person2 = new Person("Amit", 30);
 
 console.log(person1.name); // Sanjay
 console.log(person2.name); // Amit
-✅ This works fine, but what if we want to add a common method to all Person objects?
+
+This works fine, but what if we want to add a common method to all Person objects?
 
 2️⃣ Using Prototype to Add Methods
 Instead of defining methods inside the constructor, we can attach them to the prototype to save memory.
@@ -31,7 +32,7 @@ Person.prototype.greet = function () {
 
 person1.greet(); // Hello, my name is Sanjay.
 person2.greet(); // Hello, my name is Amit.
-✅ Now, all Person instances inherit the greet() method without copying it into each object.
+ Now, all Person instances inherit the greet() method without copying it into each object.
 
 🔹 Prototype Chain
 If a property/method is not found in the object, JavaScript looks up the prototype chain until it finds it or reaches null.
@@ -107,7 +108,8 @@ Use hasOwnProperty() to check if a property exists directly on an object (not in
 Code
 console.log(dog.hasOwnProperty("bark")); // true
 console.log(dog.hasOwnProperty("makeSound")); // false (inherited)
-🔹 Key Takeaways
+
+ Key Takeaways
 ✔️ Prototype allows objects to inherit properties/methods
 ✔️ Every function has a prototype property
 ✔️ Objects inherit from their prototype chain

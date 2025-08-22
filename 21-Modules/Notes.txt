@@ -3,15 +3,15 @@
 🔹 What are JavaScript Modules?
 Modules help in organizing JavaScript code into separate files, improving maintainability and reusability.
 
-✅ Advantages of Modules:
+ Advantages of Modules:
 ✔️ Encapsulation: Prevents global scope pollution.
 ✔️ Reusability: Code can be reused across multiple files.
 ✔️ Maintainability: Large codebases are easier to manage.
 
 🔹 Exporting and Importing Modules
-✅ Named Exports & Imports
+ Named Exports & Imports
 
-📌 Exporting multiple values from a module
+Exporting multiple values from a module
 
 code
 // math.js (Module file)
@@ -22,34 +22,34 @@ export function add(a, b) {
 export function multiply(a, b) {
     return a * b;
 }
-📌 Importing specific values from a module
+ Importing specific values from a module
 
 code
 // main.js
 import { PI, add } from './math.js';
 
-console.log(PI); // ✅ Output: 3.1416
-console.log(add(5, 10)); // ✅ Output: 15
+console.log(PI); //  Output: 3.1416
+console.log(add(5, 10)); //  Output: 15
 
-✅ Default Exports & Imports
+Default Exports & Imports
 
-📌 Exporting a default function
+Exporting a default function
 
 code
 // greet.js
 export default function greet(name) {
     return `Hello, ${name}!`;
 }
-📌 Importing the default export
+ Importing the default export
 
 code
 // main.js
 import greet from './greet.js';
 
-console.log(greet("Alice")); // ✅ Output: Hello, Alice!
+console.log(greet("Alice")); //  Output: Hello, Alice!
 
 
-✅ Renaming Imports and Exports
+ Renaming Imports and Exports
 
 code
 // utils.js
@@ -59,38 +59,39 @@ export function fetchData() {
 export function processData() {
     return "Processing data...";
 }
-📌 Renaming imports
+ Renaming imports
 
 code
 // main.js
 import { fetchData as getData, processData as handleData } from './utils.js';
 
-console.log(getData()); // ✅ Output: Fetching data...
-console.log(handleData()); // ✅ Output: Processing data...
+console.log(getData()); //  Output: Fetching data...
+console.log(handleData()); //  Output: Processing data...
 🔹 Dynamic Imports (Lazy Loading)
 
-✅ Load modules dynamically using import()
+Load modules dynamically using import()
 
 code
 async function loadModule() {
     const module = await import('./math.js');
-    console.log(module.add(4, 5)); // ✅ Output: 9
+    console.log(module.add(4, 5)); //  Output: 9
 }
 loadModule();
-✅ Use Case: Load a module only when needed (e.g., button click)
+Use Case: Load a module only when needed (e.g., button click)
 
 code
 document.querySelector("button").addEventListener("click", async () => {
     const { greet } = await import('./greet.js');
-    console.log(greet("Bob")); // ✅ Output: Hello, Bob!
+    console.log(greet("Bob")); //  Output: Hello, Bob!
 });
 
 🔹 CommonJS vs. ES Modules
-Feature	CommonJS (Node.js)	ES Modules (Modern JS)
-Syntax	require() / module.exports	import / export
-Loading	Synchronous	Asynchronous
-Use Case	Node.js	Browsers & Modern JS
-✅ CommonJS Example (Node.js)
+Feature	            CommonJS (Node.js)	        ES Modules (Modern JS)
+Syntax	            require() / module.exports	import / export
+Loading	            Synchronous	                Asynchronous
+Use Case	        Node.js	                    Browsers & Modern JS
+
+CommonJS Example (Node.js)
 
 code
 // math.js
@@ -101,9 +102,9 @@ module.exports = {
 code
 // main.js
 const math = require('./math.js');
-console.log(math.add(2, 3)); // ✅ Output: 5
+console.log(math.add(2, 3)); // Output: 5
 
-✅ ES Module Example (Modern JS)
+ ES Module Example (Modern JS)
 
 code
 // math.js
@@ -113,12 +114,12 @@ export function add(a, b) {
 code
 // main.js
 import { add } from './math.js';
-console.log(add(2, 3)); // ✅ Output: 5
+console.log(add(2, 3)); //  Output: 5
 
 
-🎯 Summary
-✅ Modules help in organizing, maintaining, and reusing code.
-✅ Use export and import to share and use functions, variables, and objects.
-✅ Default exports allow exporting one value per module, while named exports allow multiple.
-✅ Dynamic imports (import()) load modules on demand.
+Summary
+ Modules help in organizing, maintaining, and reusing code.
+ Use export and import to share and use functions, variables, and objects.
+ Default exports allow exporting one value per module, while named exports allow multiple.
+ Dynamic imports (import()) load modules on demand.
 

@@ -1,4 +1,4 @@
-🛠️ Exercises: Practice JavaScript Modules
+ Exercises: Practice JavaScript Modules
 1️⃣ Create a module named calculator.js that exports add, subtract, multiply, and divide functions. Import it in main.js and use them.
 
 
