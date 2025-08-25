@@ -2,10 +2,10 @@ Memoization
 🔹 What is Memoization?
 Memoization is a technique used to optimize functions by caching their results. If a function is called with the same inputs, the stored result is returned instead of recomputing.
 
-📌 Why use Memoization?
-✅ Speeds up repeated function calls
-✅ Reduces unnecessary computations
-✅ Useful in recursion and expensive calculations
+Why use Memoization?
+Speeds up repeated function calls
+Reduces unnecessary computations
+Useful in recursion and expensive calculations
 
 🔹 Example: Without Memoization
 Consider a function that calculates the factorial of a number:
@@ -16,8 +16,8 @@ function factorial(n) {
     return n * factorial(n - 1);
 }
 
-console.log(factorial(5)); // ✅ Output: 120
-console.log(factorial(5)); // ❌ Recalculates again
+console.log(factorial(5)); //  Output: 120
+console.log(factorial(5)); //  Recalculates again
 Problem: Every time factorial(5) is called, it recomputes everything.
 
 🔹 Implementing Memoization
@@ -43,8 +43,8 @@ function memoizedFactorial() {
 
 const fact = memoizedFactorial(); // Create a memoized function
 
-console.log(fact(5)); // ✅ Calculates
-console.log(fact(5)); // ✅ Fetches from cache (much faster!)
+console.log(fact(5)); //  Calculates
+console.log(fact(5)); //  Fetches from cache (much faster!)
 
 🔹 Generalized Memoization Function
 We can create a higher-order function to memoize any function.
@@ -74,17 +74,18 @@ function fibonacci(n) {
 }
 
 const memoizedFibonacci = memoize(fibonacci);
-console.log(memoizedFibonacci(10)); // ✅ Calculates
-console.log(memoizedFibonacci(10)); // ✅ Fetches from cache
+console.log(memoizedFibonacci(10)); //  Calculates
+console.log(memoizedFibonacci(10)); //  Fetches from cache
+
 🔹 When to Use Memoization?
-✅ Recursive functions (Factorial, Fibonacci)
-✅ Expensive calculations (Math-heavy operations)
-✅ Fetching API data (Avoid unnecessary network requests)
-✅ Processing large datasets
+ Recursive functions (Factorial, Fibonacci)
+ Expensive calculations (Math-heavy operations)
+ Fetching API data (Avoid unnecessary network requests)
+ Processing large datasets
 
 
-🎯 Summary
-✅ Memoization stores function results to improve performance.
-✅ Avoids redundant calculations, making functions faster.
-✅ Works best for recursion, expensive calculations, and API requests.
+ Summary
+ Memoization stores function results to improve performance.
+ Avoids redundant calculations, making functions faster.
+ Works best for recursion, expensive calculations, and API requests.
 

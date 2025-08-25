@@ -1,10 +1,10 @@
-📌 JavaScript Regular Expressions (RegExp)
+JavaScript Regular Expressions (RegExp)
 🔹 What is RegExp?
 A regular expression (RegExp) is a sequence of characters that forms a search pattern. It is used for pattern matching and text manipulation.
 
-Use cases: ✅ Validating email, phone numbers, and passwords
-✅ Searching and replacing text in strings
-✅ Extracting data from text
+Use cases: Validating email, phone numbers, and passwords
+ Searching and replacing text in strings
+ Extracting data from text
 
 🔹 Creating a Regular Expression
 You can create a RegExp in two ways:
@@ -13,10 +13,12 @@ You can create a RegExp in two ways:
 
 code
 const regex = /hello/i; // 'i' makes it case insensitive
+
 2️⃣ Using the RegExp constructor
 
 code
 const regex = new RegExp("hello", "i");
+
 🔹 RegExp Flags
 Flag	Description
 g	Global match (find all matches)
@@ -25,11 +27,13 @@ m	Multi-line matching
 s	Dot (.) matches newlines
 u	Unicode support
 y	"Sticky" search
+
 🔹 Example: Using flags
 
 code
 const regex = /hello/gi; // 'g' - global, 'i' - case insensitive
 console.log("Hello world".match(regex)); // Output: ["Hello"]
+
 🔹 RegExp Methods
 Method	Description
 test()	Returns true or false if there is a match
@@ -38,12 +42,13 @@ match()	Used with strings to find matches
 replace()	Replaces matched substrings
 search()	Returns index of the first match
 split()	Splits a string using a regex
+
 Example 1: test() Method
 
 code
 const regex = /hello/i;
-console.log(regex.test("Hello world")); // ✅ true
-console.log(regex.test("Hi there")); // ❌ false
+console.log(regex.test("Hello world")); //  true
+console.log(regex.test("Hi there")); //  false
 
 Example 2: exec() Method
 
@@ -69,18 +74,19 @@ code
 
 const text = "apple, banana, apple, orange";
 const regex = /apple/g;
-console.log(text.match(regex)); // ✅ ["apple", "apple"]
+console.log(text.match(regex)); //  ["apple", "apple"]
 Example 4: replace() Method
 code
 const sentence = "I like cats. Cats are cute.";
 console.log(sentence.replace(/cats/gi, "dogs"));
-// ✅ Output: "I like dogs. Dogs are cute."
+// Output: "I like dogs. Dogs are cute."
 
 Example 5: search() Method
 
 code
 const sentence = "I love JavaScript!";
-console.log(sentence.search(/JavaScript/)); // ✅ Output: 7 (index of match)
+console.log(sentence.search(/JavaScript/)); //  Output: 7 (index of match)
+
 🔹 Common Regular Expressions
 Pattern	Meaning	Example Match
 \d	Any digit (0-9)	123, 9
@@ -102,41 +108,41 @@ $	End of string	world$ matches "hello world"
 
 🔹 Real-World Examples
 
-✅ 1. Validate an Email
+ 1. Validate an Email
 
 code
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-console.log(emailRegex.test("test@example.com")); // ✅ true
-console.log(emailRegex.test("invalid-email")); // ❌ false
+console.log(emailRegex.test("test@example.com")); //  true
+console.log(emailRegex.test("invalid-email")); //  false
 
-✅ 2. Validate a Phone Number
+ 2. Validate a Phone Number
 
 code
 
 const phoneRegex = /^\d{10}$/;
-console.log(phoneRegex.test("9876543210")); // ✅ true
-console.log(phoneRegex.test("98765-43210")); // ❌ false
+console.log(phoneRegex.test("9876543210")); //  true
+console.log(phoneRegex.test("98765-43210")); //  false
 
 
-✅ 3. Extract All Numbers from a String
+ 3. Extract All Numbers from a String
 
 code
 
 const text = "The price is 200 and the discount is 50.";
 const numbers = text.match(/\d+/g);
-console.log(numbers); // ✅ ["200", "50"]
+console.log(numbers); //  ["200", "50"]
 
-✅ 4. Validate a Password (At least 8 characters, one number, one uppercase)
+ 4. Validate a Password (At least 8 characters, one number, one uppercase)
 code
 
 const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
-console.log(passwordRegex.test("StrongPass1")); // ✅ true
-console.log(passwordRegex.test("weakpass")); // ❌ false
+console.log(passwordRegex.test("StrongPass1")); //  true
+console.log(passwordRegex.test("weakpass")); //  false
 
 
-🎯 Summary
-✅ RegExp helps with pattern matching and text manipulation.
-✅ Methods like test(), exec(), match(), and replace() are useful for string operations.
-✅ Common use cases include validation (emails, phone numbers), searching, and replacing text.
+ Summary
+ RegExp helps with pattern matching and text manipulation.
+ Methods like test(), exec(), match(), and replace() are useful for string operations.
+ Common use cases include validation (emails, phone numbers), searching, and replacing text.
 

@@ -23,7 +23,7 @@ console.log(tenPercentDiscount);
 Exercise 3 solution:
 
 function checkMinAge(minAge) {
-  return (age) => (age>= minAge) ? 'allowed' : 'not allowed';
+  return (age) => (age >= minAge) ? 'allowed' : 'not allowed';
 }
 
 console.log(checkMinAge(18) (11));

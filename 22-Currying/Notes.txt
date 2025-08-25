@@ -2,7 +2,7 @@ Currying in JavaScript
 🔹 What is Currying?
 Currying is a functional programming technique where a function is transformed into a sequence of functions, each taking a single argument. Instead of calling a function with multiple arguments at once, you call a series of functions, each with one argument.
 
-📌 Syntax Example:
+ Syntax Example:
 
 code
 function add(a) {
@@ -11,7 +11,7 @@ function add(a) {
   };
 }
 
-console.log(add(2)(3)); // ✅ 5
+console.log(add(2)(3)); //  5
 
 The function add(2)(3) is curried, meaning add(2) returns another function that takes b as an argument.
 
@@ -33,7 +33,7 @@ function multiply(a) {
   };
 }
 
-console.log(multiply(2)(3)(4)); // ✅ Output: 24
+console.log(multiply(2)(3)(4)); //  Output: 24
 
 Flow Execution:
 multiply(2) returns a function that expects b.
@@ -47,7 +47,7 @@ function calculateVolume(length, width, height) {
   return length * width * height;
 }
 
-console.log(calculateVolume(2, 3, 4)); // ✅ 24
+console.log(calculateVolume(2, 3, 4)); // 24
 Example: With Currying
 code
 function calculateVolume(length) {
@@ -58,7 +58,7 @@ function calculateVolume(length) {
   };
 }
 
-console.log(calculateVolume(2)(3)(4)); // ✅ 24
+console.log(calculateVolume(2)(3)(4)); //  24
 Here, each function takes only one argument and returns another function until all arguments are provided.
 
 🔹 Using ES6 Arrow Functions for Currying
@@ -67,7 +67,7 @@ We can simplify the syntax using arrow functions:
 code
 const add = a => b => c => a + b + c;
 
-console.log(add(1)(2)(3)); // ✅ 6
+console.log(add(1)(2)(3)); //  6
 This is a concise and readable way of writing curried functions.
 
 🔹 Partial Application vs Currying
@@ -87,6 +87,6 @@ function multiply(a, b) {
 }
 
 const double = multiply.bind(null, 2); // Fixes the first argument as 2
-console.log(double(5)); // ✅ 10
+console.log(double(5)); //  10
 Here, double(5) is equivalent to multiply(2, 5).
 
